@@ -33,6 +33,8 @@ import DailyRepoart from './Components/DailyRepoart'
 import LeaveList from './Components/LeaveList'
 import EmployeeDetails from './Components/EmployeeDetails'
 import EditEmployeeIndivisual from './Components/EditEmployeeIndivisual'
+import GeneratePayslip from './Components/GeneratePayslip'
+import ListReimbuesement from './Components/ListReimbuesement'
 
 function App() {
 
@@ -67,6 +69,8 @@ function App() {
           ></Route>
           <Route path='/dashboard/dailyReport' element={<DailyRepoart />}></Route>
           <Route path='/dashboard/leaveList' element={<LeaveList />}></Route>
+          <Route path='/dashboard/generatePayslip' element={<GeneratePayslip />}></Route>
+          <Route path='/dashboard/listReimbuesement' element={<ListReimbuesement />}></Route>
           <Route path='/dashboard/employeemenu' element={<EmployeeMenu />}>
           </Route>
           <Route path='/dashboard/employee' element={<Employee />}></Route>

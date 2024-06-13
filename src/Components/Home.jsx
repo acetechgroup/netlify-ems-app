@@ -221,6 +221,10 @@ const Home = () => {
             </Link>
           </div>
           <div className='col '>
+          <Link
+            to='/dashboard/generatePayslip'
+            className='nav-link'
+            >
             <div className='dash-1'>
               <div className='d-flex justify-content-between dash-3 p-2'>
                 <div className='d-flex'>
@@ -248,9 +252,14 @@ const Home = () => {
                 <div>INR {salaryTotal}</div>
               </div>
             </div>
+            </Link>
           </div>
           <div className='col '>
-            <div className='dash-1'>
+          <Link
+            to='/dashboard/listReimbuesement'
+            className='nav-link'
+            >
+              <div className='dash-1'>
               <div className='d-flex justify-content-between dash-2 p-2'>
                 <div className='d-flex'>
                   <div className='me-2 icon-rei'>
@@ -277,6 +286,7 @@ const Home = () => {
                 <div>INR {employeeTotal} K</div>
               </div>
             </div>
+            </Link>
           </div>
           <div className='col '>
             <div className='dash-1'>
