@@ -35,6 +35,7 @@ import EmployeeDetails from './Components/EmployeeDetails'
 import EditEmployeeIndivisual from './Components/EditEmployeeIndivisual'
 import GeneratePayslip from './Components/GeneratePayslip'
 import ListReimbuesement from './Components/ListReimbuesement'
+import AttendanceRegularization from './Components/AttendanceRegularization'
 
 function App() {
 
@@ -71,6 +72,7 @@ function App() {
           <Route path='/dashboard/leaveList' element={<LeaveList />}></Route>
           <Route path='/dashboard/generatePayslip' element={<GeneratePayslip />}></Route>
           <Route path='/dashboard/listReimbuesement' element={<ListReimbuesement />}></Route>
+          <Route path='/dashboard/attendanceRegularization' element={<AttendanceRegularization />}></Route>
           <Route path='/dashboard/employeemenu' element={<EmployeeMenu />}>
           </Route>
           <Route path='/dashboard/employee' element={<Employee />}></Route>

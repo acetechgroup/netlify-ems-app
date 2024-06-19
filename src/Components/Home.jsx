@@ -188,8 +188,8 @@ const Home = () => {
           </div>
           <div className='col '>
             <Link
-            to='/dashboard/leaveList'
-            className='nav-link'
+              to='/dashboard/leaveList'
+              className='nav-link'
             >
               <div className='dash-1'>
                 <div className='d-flex justify-content-between dash-2 p-2'>
@@ -221,101 +221,106 @@ const Home = () => {
             </Link>
           </div>
           <div className='col '>
-          <Link
-            to='/dashboard/generatePayslip'
-            className='nav-link'
-            >
-            <div className='dash-1'>
-              <div className='d-flex justify-content-between dash-3 p-2'>
-                <div className='d-flex'>
-                  <div className='me-2 icon-pay'>
-                    <i className="bi bi-wallet-fill icon-pay-1"></i>
-                  </div>
-                  <div className='dash-font'>
-                    Payments
-                  </div>
-                </div>
-                <div className='dash-font-1'>
-                  INR {salaryTotal} Crore
-                </div>
-              </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>Salaries :</div>
-                <div>INR {salaryTotal} Crore</div>
-              </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>Expenses :</div>
-                <div>INR {salaryTotal}</div>
-              </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>In Hand :</div>
-                <div>INR {salaryTotal}</div>
-              </div>
-            </div>
-            </Link>
-          </div>
-          <div className='col '>
-          <Link
-            to='/dashboard/listReimbuesement'
-            className='nav-link'
+            <Link
+              to='/dashboard/generatePayslip'
+              className='nav-link'
             >
               <div className='dash-1'>
-              <div className='d-flex justify-content-between dash-2 p-2'>
-                <div className='d-flex'>
-                  <div className='me-2 icon-rei'>
-                    <i className="bi bi-currency-rupee icon-rei-1"></i>
+                <div className='d-flex justify-content-between dash-3 p-2'>
+                  <div className='d-flex'>
+                    <div className='me-2 icon-pay'>
+                      <i className="bi bi-wallet-fill icon-pay-1"></i>
+                    </div>
+                    <div className='dash-font'>
+                      Payments
+                    </div>
                   </div>
-                  <div className='dash-font'>
-                    Reimbursements
+                  <div className='dash-font-1'>
+                    INR {salaryTotal} Crore
                   </div>
                 </div>
-                <div className='dash-font-1'>
-                  INR {employeeTotal} K
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>Salaries :</div>
+                  <div>INR {salaryTotal} Crore</div>
+                </div>
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>Expenses :</div>
+                  <div>INR {salaryTotal}</div>
+                </div>
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>In Hand :</div>
+                  <div>INR {salaryTotal}</div>
                 </div>
               </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>Aproved :</div>
-                <div>INR {employeeTotal} Lac</div>
-              </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>Pending :</div>
-                <div>INR {employeeTotal} K</div>
-              </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>In Salary :</div>
-                <div>INR {employeeTotal} K</div>
-              </div>
-            </div>
             </Link>
           </div>
           <div className='col '>
-            <div className='dash-1'>
-              <div className='d-flex justify-content-between dash-3 p-2'>
-                <div className='d-flex'>
-                  <div className='me-2 icon-home'>
-                    <i className="bi bi-calendar icon-home-1"></i>
+            <Link
+              to='/dashboard/listReimbuesement'
+              className='nav-link'
+            >
+              <div className='dash-1'>
+                <div className='d-flex justify-content-between dash-2 p-2'>
+                  <div className='d-flex'>
+                    <div className='me-2 icon-rei'>
+                      <i className="bi bi-currency-rupee icon-rei-1"></i>
+                    </div>
+                    <div className='dash-font'>
+                      Reimbursements
+                    </div>
                   </div>
-                  <div className='dash-font'>
-                    AR
+                  <div className='dash-font-1'>
+                    INR {employeeTotal} K
                   </div>
                 </div>
-                <div className='dash-font-1'>
-                  {employeeTotal}
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>Aproved :</div>
+                  <div>INR {employeeTotal} Lac</div>
+                </div>
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>Pending :</div>
+                  <div>INR {employeeTotal} K</div>
+                </div>
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>In Salary :</div>
+                  <div>INR {employeeTotal} K</div>
                 </div>
               </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>Approved :</div>
-                <div>{employeeTotal}</div>
+            </Link>
+          </div>
+          <div className='col '>
+            <Link
+              to='/dashboard/attendanceRegularization'
+              className='nav-link'
+            >
+              <div className='dash-1'>
+                <div className='d-flex justify-content-between dash-3 p-2'>
+                  <div className='d-flex'>
+                    <div className='me-2 icon-home'>
+                      <i className="bi bi-calendar icon-home-1"></i>
+                    </div>
+                    <div className='dash-font'>
+                      AR
+                    </div>
+                  </div>
+                  <div className='dash-font-1'>
+                    {employeeTotal}
+                  </div>
+                </div>
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>Approved :</div>
+                  <div>{employeeTotal}</div>
+                </div>
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>Pending :</div>
+                  <div>{employeeTotal}</div>
+                </div>
+                <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
+                  <div>Rejected :</div>
+                  <div>{employeeTotal}</div>
+                </div>
               </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>Pending :</div>
-                <div>{employeeTotal}</div>
-              </div>
-              <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
-                <div>Rejected :</div>
-                <div>{employeeTotal}</div>
-              </div>
-            </div>
+            </Link>
           </div>
           <div className='col '>
             <div className='dash-1'>
