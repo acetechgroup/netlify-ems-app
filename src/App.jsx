@@ -36,6 +36,8 @@ import EditEmployeeIndivisual from './Components/EditEmployeeIndivisual'
 import GeneratePayslip from './Components/GeneratePayslip'
 import ListReimbuesement from './Components/ListReimbuesement'
 import AttendanceRegularization from './Components/AttendanceRegularization'
+import OdList from './Components/OdList'
+import TaskList from './Components/TaskList'
 
 function App() {
 
@@ -73,6 +75,8 @@ function App() {
           <Route path='/dashboard/generatePayslip' element={<GeneratePayslip />}></Route>
           <Route path='/dashboard/listReimbuesement' element={<ListReimbuesement />}></Route>
           <Route path='/dashboard/attendanceRegularization' element={<AttendanceRegularization />}></Route>
+          <Route path='/dashboard/odList' element={<OdList />}></Route>
+          <Route path='/dashboard/taskList' element={<TaskList />}></Route>
           <Route path='/dashboard/employeemenu' element={<EmployeeMenu />}>
           </Route>
           <Route path='/dashboard/employee' element={<Employee />}></Route>

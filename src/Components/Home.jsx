@@ -323,6 +323,9 @@ const Home = () => {
             </Link>
           </div>
           <div className='col '>
+            <Link
+            to='/dashboard/odList'
+            className='nav-link'>
             <div className='dash-1'>
               <div className='d-flex justify-content-between dash-2 p-2'>
                 <div className='d-flex'>
@@ -350,8 +353,12 @@ const Home = () => {
                 <div>{employeeTotal}</div>
               </div>
             </div>
+            </Link>
           </div>
           <div className='col '>
+            <Link
+            to='/dashboard/taskList'
+            className='nav-link'>
             <div className='dash-1'>
               <div className='d-flex justify-content-between dash-3 p-2'>
                 <div className='d-flex'>
@@ -379,6 +386,7 @@ const Home = () => {
                 <div>{employeeTotal}</div>
               </div>
             </div>
+            </Link>
           </div>
         </div>
         <div className='dash-contan'>

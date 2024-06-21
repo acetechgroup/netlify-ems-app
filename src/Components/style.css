@@ -876,9 +876,18 @@ input.checkbox-size {
     line-height: 50px;
 }
 
+
 .header-main-2 {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600;
+    position: relative;
+    top: -8px;
+}
+.header-main-6 {
+    font-size: 11px;
+    font-weight: 300;
+    position: absolute;
+    top: 16px;
 }
 
 .header-main-3 {
@@ -1602,7 +1611,7 @@ input:focus {
 
 .dailyReportTable th,
 .dailyReportTable td {
-    padding: 3px 3px;
+    padding: 3px 10px;
     border: 1px solid rgb(221, 216, 216);
 }
 

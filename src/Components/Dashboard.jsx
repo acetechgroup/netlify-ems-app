@@ -45,8 +45,13 @@ const Dashboard = () => {
           <div>
             <img src="/Images/Acetech-logo-1.png" alt="LOGO" className="logo_image" role="button" />
           </div>
-          <div className="header-main-2" role="button">
-          Employee Management System
+          <div className="" role="button">
+            <div className="header-main-2">
+              STAFF WORLD
+            </div>
+            <div className="header-main-6">
+              Employee Management System
+            </div>
           </div>
         </div>
         <div className="header-main-3">
@@ -84,8 +89,8 @@ const Dashboard = () => {
           </div>
           <div className="header-main-5 ms-3 me-2">
             <div className="">
-              
-                <img src="/Images/Acetech-logo-1.png" alt="LOGO" className="logo_profile" role="button" onClick={()=> setOpenProfile((prev) => !prev)}/>
+
+              <img src="/Images/Acetech-logo-1.png" alt="LOGO" className="logo_profile" role="button" onClick={() => setOpenProfile((prev) => !prev)} />
 
             </div>
           </div>
@@ -94,7 +99,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="container-fluid">
         <div className="row flex-nowrap main_div">
           <div className="col col-1 col-xl-2 px-sm-2 px-0 navbg">
@@ -277,9 +282,9 @@ const Dashboard = () => {
       </div>
       <div>
         {
-          openProfile && <MiniDropdown onClose={()=> setOpenProfile(false)}/>
+          openProfile && <MiniDropdown onClose={() => setOpenProfile(false)} />
         }
-        
+
       </div>
       <div className="dash-footer">
         Copyright © <a href="#" className="dash-footer-link"> Acetech Work Organization Pvt. Ltd. </a> 2024.
