@@ -50,7 +50,7 @@ const Dashboard = () => {
               STAFF WORLD
             </div>
             <div className="header-main-6">
-              Employee Management System
+              An Employee Management System
             </div>
           </div>
         </div>

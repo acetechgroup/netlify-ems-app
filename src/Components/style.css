@@ -867,31 +867,34 @@ input.checkbox-size {
 }
 
 .header-main-1 {
-    background-color: #fff;
+    background-color: #000000;
+    color: #fff;
     display: flex;
-    width: 35vw;
-    margin-top: 3px;
+    width: 30vw;
+    margin-top: 2px;
     border-radius: 0 50px 0 0;
     padding-left: 10px;
-    line-height: 50px;
+    line-height: 51px;
 }
 
 
 .header-main-2 {
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 700;
     position: relative;
-    top: -8px;
+    top: -9px;
+    text-decoration: underline;
 }
 .header-main-6 {
-    font-size: 11px;
+    font-size: 13.5px;
     font-weight: 300;
     position: absolute;
-    top: 16px;
+    top: 18px;
+    /* left: 100px; */
 }
 
 .header-main-3 {
-    width: 65vw;
+    width: 70vw;
     display: flex;
     justify-content: right;
     padding-right: 10px;
