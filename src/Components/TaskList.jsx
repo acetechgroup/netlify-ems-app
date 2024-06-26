@@ -15,14 +15,18 @@ const TaskList = () => {
     const [filterbySite, setFilterbySite] = useState('');
     const [filterbyShift, setFilterbyShift] = useState('');
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:3000/auth/employee")
+    useEffect(() => {const token = localStorage.getItem('token');
+      axios
+      .get("https://emsproject-production.up.railway.app/api/employee/", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setEmployeeCopy(result.data.Result)
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setEmployeeCopy(result.data)
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -89,7 +93,7 @@ const TaskList = () => {
                       {employee.map((e) => (
                         <tr>
                           <td>
-                            {e.id}
+                            {e.employeeId}
                           </td>
                           
                           <td>
@@ -101,7 +105,7 @@ const TaskList = () => {
                             {e.status}
                           </td>
                           <td>
-                            {e.status}
+                            {e.name}
                           </td>
                           <td>
                             {e.status}
