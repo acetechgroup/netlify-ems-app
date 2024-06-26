@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const AdminRegistration = () => {
     const [registration, setRegistration] = useState({
         name: "",
-        mobile: "",
+        roles: "",
         email: "",
         password: "",
     });
@@ -17,13 +17,17 @@ const AdminRegistration = () => {
         e.preventDefault()
         const formData = new FormData();
         formData.append('name', registration.name);
-        formData.append('mobile', registration.mobile);
+        formData.append('roles', registration.roles);
         formData.append('email', registration.email);
         formData.append('password', registration.password);
 
-        axios.post('http://localhost:3000/registration/admin_registration', formData)
+        axios.post('https://emsproject-production.up.railway.app/auth/addUser', formData, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
             .then(result => {
-                if (result.data.Status) {
+                if (result.data) {
                     navigate('/adminlogin')
                     // console.log(result);
                 } else {
@@ -63,17 +67,17 @@ const AdminRegistration = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label htmlFor="mobile"><strong>Mobile:</strong></label>
+                                            <label htmlFor="roles"><strong>Role:</strong></label>
                                         </td>
                                         <td>
                                             <input
-                                                type="mobile"
-                                                name='mobile'
-                                                id='mobile'
+                                                type="text"
+                                                name='roles'
+                                                id='roles'
                                                 autoComplete='off'
-                                                placeholder='Enter Mobile'
+                                                placeholder='Enter role'
                                                 className='form-control rounded-0'
-                                                onChange={(e) => setRegistration({ ...registration, mobile: e.target.value })}
+                                                onChange={(e) => setRegistration({ ...registration, roles: e.target.value })}
                                             />
                                         </td>
                                     </tr>

@@ -1,16 +1,24 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-
+ 
 const Category = () => {
-
+ 
     const [category, setCategory] = useState([])
-
+ 
     useEffect(()=> {
-        axios.get('http://localhost:3000/auth/category')
+        const token = localStorage.getItem('token');
+ 
+        axios.get('https://emsproject-production.up.railway.app/api/category/',{
+            headers: {
+                "Authorization": `Bearer ${token}`
+              }
+            })
+       
         .then(result => {
-            if(result.data.Status) {
-                setCategory(result.data.Result);
+            if(result.data) {
+                setCategory(result.data);
+                console.log(token)
             } else {
                 alert(result.data.Error)
             }
@@ -20,7 +28,7 @@ const Category = () => {
     <>
     <div className='w-100'>
     <div className='row category-bg'>
-        
+       
         <div className=" p-2 d-flex justify-content-center shadow bg-head">
                 <h4>Cetegory List</h4>
             </div>
@@ -37,7 +45,7 @@ const Category = () => {
                     {
                         category.map(c => (
                             <tr>
-                                <td>{c.name}</td>
+                                <td>{c.categoryName}</td>
                             </tr>
                         ))
                     }
@@ -50,5 +58,5 @@ const Category = () => {
     </>
   )
 }
-
+ 
 export default Category

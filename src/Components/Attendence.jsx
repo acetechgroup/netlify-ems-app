@@ -16,37 +16,50 @@ const Attendence = () => {
         AdminRecords();
     }, [])
 
-    const AdminRecords = () => {
-        axios.get('http://localhost:3000/auth/admin_records')
+    const AdminRecords = () => {const token = localStorage.getItem('token');
+        axios
+        .get("https://emsproject-production.up.railway.app/auth/getUsers/", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
             .then(result => {
-                if (result.data.Status) {
-                    setAdmins(result.data.Result)
+                if (result.data) {
+                    setAdmins(result.data)
                 } else {
                     alert(result.data.Error)
                 }
             })
     }
 
-    useEffect(() => {
+    useEffect(() => {const token = localStorage.getItem('token');
         axios
-            .get("http://localhost:3000/auth/category")
-            .then((result) => {
-                if (result.data.Status) {
-                    setCategory(result.data.Result);
-                } else {
-                    alert(result.data.Error);
-                }
-            })
-            .catch((err) => console.log(err));
-    }, []);
+        .get("https://emsproject-production.up.railway.app/api/category/", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+          .then((result) => {
+            if (result.data) {
+              setCategory(result.data);
+            } else {
+              alert(result.data.Error);
+            }
+          })
+          .catch((err) => console.log(err));
+      }, []);
 
-    useEffect(() => {
+    useEffect(() => {const token = localStorage.getItem('token');
         axios
-            .get("http://localhost:3000/auth/employee")
+        .get("https://emsproject-production.up.railway.app/api/employee/", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -124,7 +137,7 @@ const Attendence = () => {
                                     <select className="bg-white rounded-1 border-1" >
                                         <option selected>All Departments</option>
                                         {category.map((c) => {
-                                            return <option value={c.id}>{c.name}</option>;
+                                            return <option value={c.id}>{c.categoryName}</option>;
                                         })}
                                     </select>
                                 </span>

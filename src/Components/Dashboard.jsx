@@ -24,17 +24,31 @@ const Dashboard = () => {
       })
   }
 
-  const anvigate = useNavigate()
+  const navigate = useNavigate()
   axios.defaults.withCredentials = true
   const handleLogout = () => {
-    axios.get('http://localhost:3000/auth/logout')
-      .then(result => {
-        if (result.data.Status) {
-          // localStorage.removeItem("valid")
-          anvigate('/')
-        }
-      })
-  }
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("No token found, cannot logout.");
+      navigate('/');
+      return;
+    }
+ 
+    axios.post('https://emsproject-production.up.railway.app/auth/logout', {}, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then(result => {
+      if (result.data) {
+        localStorage.removeItem("token");
+        navigate('/');
+      } else {
+        console.error("Logout failed:", result.data);
+      }
+    })
+    .catch(err => console.error("Error in logout request:", err));
+  };
   return (
     <>
       <div className="header-main shadow">

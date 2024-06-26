@@ -1,17 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+ 
 const Employee = () => {
   const [employee, setEmployee] = useState([]);
   const navigate = useNavigate()
-
+ 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     axios
-      .get("http://localhost:3000/auth/employee")
+    .get("https://emsproject-production.up.railway.app/api/employee/", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+ 
       .then((result) => {
-        if (result.data.Status) {
-          setEmployee(result.data.Result);
+        if (result.data) {
+          setEmployee(result.data);
         } else {
           alert(result.data.Error);
         }
@@ -19,9 +25,15 @@ const Employee = () => {
       .catch((err) => console.log(err));
   }, []);
   const handleDelete = (id) => {
-    axios.delete('http://localhost:3000/auth/delete_employee/' + id)
+    const token = localStorage.getItem('token');
+    axios.delete('https://emsproject-production.up.railway.app/api/employee/' + id, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+ 
       .then(result => {
-        if (result.data.Status) {
+        if (result.data) {
           window.location.reload()
         } else {
           alert(result.data.Error)
@@ -32,7 +44,7 @@ const Employee = () => {
     <>
       <div className="employee-bg">
         <div className='row w-full'>
-
+ 
           <div className="row px-5 mt-3">
             <div className="col d-flex justify-content-lg-start">
               <div>
@@ -51,7 +63,7 @@ const Employee = () => {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Image</th>
+                    {/* <th>Image</th> */}
                     <th>Email</th>
                     <th>Address</th>
                     <th>Salary</th>
@@ -62,25 +74,25 @@ const Employee = () => {
                   {employee.map((e) => (
                     <tr>
                       <td>{e.name}</td>
-                      <td>
+                      {/* <td>
                         <img
                           src={`http://localhost:3000/Images/` + e.image}
                           className="employee_image"
                         />
-                      </td>
+                      </td> */}
                       <td>{e.email}</td>
                       <td>{e.address}</td>
                       <td>{e.salary}</td>
                       <td>
                         <Link
-                          to={`/dashboard/edit_employee/` + e.id}
+                          to={`/dashboard/edit_employee/` + e.employeeId}
                           className="btn btn-info btn-sm me-2"
                         >
                           Edit
                         </Link>
                         <button
                           className="btn btn-warning btn-sm"
-                          onClick={() => handleDelete(e.id)}
+                          onClick={() => handleDelete(e.employeeId)}
                         >
                           Delete
                         </button>
@@ -96,5 +108,5 @@ const Employee = () => {
     </>
   );
 };
-
+ 
 export default Employee;

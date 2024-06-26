@@ -22,49 +22,73 @@ const Home = () => {
     AdminRecords();
   }, [])
 
-  const AdminRecords = () => {
-    axios.get('http://localhost:3000/auth/admin_records')
+  const AdminRecords = () => {const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/auth/getUsers/", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
       .then(result => {
-        if (result.data.Status) {
-          setAdmins(result.data.Result)
+        if (result.data) {
+          setAdmins(result.data)
         } else {
           alert(result.data.Error)
         }
       })
   }
-  const adminCount = () => {
-    axios.get('http://localhost:3000/auth/admin_count')
+  const adminCount = () => {const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/auth/count", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
       .then(result => {
-        if (result.data.Status) {
-          setAdminTotal(result.data.Result[0].admin)
+        if (result.data) {
+          setAdminTotal(result.data)
         }
       })
   }
-  const employeeCount = () => {
-    axios.get('http://localhost:3000/auth/employee_count')
+   const employeeCount = () => {const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/count", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
       .then(result => {
-        if (result.data.Status) {
-          setemployeeTotal(result.data.Result[0].employee)
+        if (result.data) {
+          setemployeeTotal(result.data)
         }
       })
   }
-  const salaryCount = () => {
-    axios.get('http://localhost:3000/auth/salary_count')
+  const salaryCount = () => {const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/total", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
       .then(result => {
-        if (result.data.Status) {
-          setSalaryTotal(result.data.Result[0].salaryOFEmp)
+        if (result.data) {
+          setSalaryTotal(result.data)
         } else {
           alert(result.data.Error)
         }
       })
   }
 
-  useEffect(() => {
+  useEffect(() => {const token = localStorage.getItem('token');
     axios
-      .get("http://localhost:3000/auth/employee")
+    .get("https://emsproject-production.up.railway.app/api/employee/", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
       .then((result) => {
-        if (result.data.Status) {
-          setEmployee(result.data.Result);
+        if (result.data) {
+          setEmployee(result.data);
           // setRecords(result.data.Result);
         } else {
           alert(result.data.Error);
@@ -73,12 +97,16 @@ const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {const token = localStorage.getItem('token');
     axios
-      .get("http://localhost:3000/auth/category")
+    .get("https://emsproject-production.up.railway.app/api/category/", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
       .then((result) => {
-        if (result.data.Status) {
-          setCategory(result.data.Result);
+        if (result.data) {
+          setCategory(result.data);
         } else {
           alert(result.data.Error);
         }

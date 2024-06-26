@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+ 
 const AddEmployee = () => {
   const [employee, setEmployee] = useState({
     name: "",
@@ -13,7 +13,7 @@ const AddEmployee = () => {
     salary: "",
     address: "",
     jod: "",
-    category_id: "",
+    category: "",
     gender: "",
     marritalStatus: "",
     status: "",
@@ -23,20 +23,26 @@ const AddEmployee = () => {
   });
   const [category, setCategory] = useState([]);
   const navigate = useNavigate()
-
+ 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     axios
-      .get("http://localhost:3000/auth/category")
+    .get("https://emsproject-production.up.railway.app/api/category/",{
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+ 
       .then((result) => {
-        if (result.data.Status) {
-          setCategory(result.data.Result);
+        if (result.data) {
+          setCategory(result.data);
         } else {
           alert(result.data.Error);
         }
       })
       .catch((err) => console.log(err));
   }, []);
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault()
     const formData = new FormData();
@@ -55,19 +61,30 @@ const AddEmployee = () => {
     formData.append('site', employee.site);
     formData.append('work', employee.work);
     formData.append('image', employee.image);
-    formData.append('category_id', employee.category_id);
-
-    axios.post('http://localhost:3000/auth/add_employee', formData)
-      .then(result => {
-        if (result.data.Status) {
-          navigate('/dashboard/employee')
+    formData.append('category', employee.category);
+ 
+    const token = localStorage.getItem('token');
+ 
+ 
+    axios.post('https://emsproject-production.up.railway.app/api/employee/', formData
+    ,{  headers: {
+      "content-type": "application/json",
+      "Authorization": `Bearer ${token}` // Include the token in the Authorization header
+      },})
+ 
+    .then(result => {
+        if(result.data) {
+            navigate('/dashboard/employee')
         } else {
-          alert(result.data.Error)
+            alert(result.data.Error)
         }
-      })
-      .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
   }
-
+ 
+ 
+ 
+ 
   const marritalStatuses = [
     { marritalstatusName: 'Married' },
     { marritalstatusName: 'Unmarried' },
@@ -78,7 +95,7 @@ const changeMarritalStatus = (e) => {
     setMarritalStatus(e.target.value)
     setEmployee({ ...employee, marritalStatus: e.target.value })
 }
-
+ 
 const statuses = [
   { statusName: 'Current' },
   { statusName: 'Ex-Employee' },
@@ -92,7 +109,7 @@ const changeStatus = (e) => {
   setStatus(e.target.value)
   setEmployee({ ...employee, status: e.target.value })
 }
-
+ 
 const sites = [
   { siteName: 'New Delhi' },
   { siteName: 'Mumbai' },
@@ -117,7 +134,7 @@ const changeWork = (e) => {
   setWork(e.target.value)
   setEmployee({ ...employee, work: e.target.value })
 }
-
+ 
   return (
     <>
       <div className="add_emp_bg">
@@ -259,9 +276,9 @@ const changeWork = (e) => {
                   Category / Department
                 </label>
                 <select name="category" id="category" className="form-select form-control rounded-0"
-                  onChange={(e) => setEmployee({ ...employee, category_id: e.target.value })}>
+                  onChange={(e) => setEmployee({ ...employee, category: e.target.value })}>
                   {category.map((c) => {
-                    return <option value={c.id}>{c.name}</option>;
+                    return <option value={c.id}>{c.categoryName}</option>;
                   })}
                 </select>
               </div>
@@ -283,7 +300,7 @@ const changeWork = (e) => {
                         Male
                       </label>
                     </span>
-
+ 
                     <span className='me-2'>
                       <input type="radio" id='radio-2' name='gender'
                         value='female'
@@ -295,7 +312,7 @@ const changeWork = (e) => {
                         Female
                       </label>
                     </span>
-
+ 
                     <span>
                       <input type="radio" id='radio-3' name='gender'
                         value='trans'
@@ -398,5 +415,5 @@ const changeWork = (e) => {
     </>
   );
 };
-
+ 
 export default AddEmployee;

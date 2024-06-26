@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-
+ 
 const CurrentEmployee = () => {
     const [employee, setEmployee] = useState([]);
     const [records, setRecords] = useState([])
-    
-
-
-    useEffect(() => {
+   
+ 
+ 
+    useEffect(() => {const token = localStorage.getItem('token');
         axios
-            .get("http://localhost:3000/auth/employee")
+        .get("https://emsproject-production.up.railway.app/api/employee/", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -41,7 +45,7 @@ const CurrentEmployee = () => {
                     Employees
                 </div>
                 <div className='currentEmplyee-bg-3'>
-
+ 
                     {/* this is for field set input */}
                     {/* <div className='body-fldset'>
                         <div className='form-fldset'>
@@ -52,7 +56,7 @@ const CurrentEmployee = () => {
                         </div>
                     </div> */}
                     {/* this is for field set input ends*/}
-
+ 
                     <div >
                         <div className='body-fldset'>
                             <div className='form-fldset'>
@@ -61,7 +65,7 @@ const CurrentEmployee = () => {
                                     className='text-fldset'>
                                     <option value="">Gender</option>
                                     {employee.map((c) => {
-                                        return <option value={c.id}>{c.name}</option>;
+                                        return <option value={c.id}>{c.gender}</option>;
                                     })}
                                 </select>
                                 <label htmlFor="" className='label-fldset'>
@@ -114,7 +118,7 @@ const CurrentEmployee = () => {
                                 className='text-fldset'>
                                 <option value="">SHIFT</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.name}</option>;
+                                    return <option value={c.id}>{c.work}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -131,7 +135,7 @@ const CurrentEmployee = () => {
                                 className='text-fldset'>
                                 <option value="">DEPARTMENT</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.name}</option>;
+                                    return <option value={c.id}>{c.category}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -148,7 +152,7 @@ const CurrentEmployee = () => {
                                 className='text-fldset'>
                                 <option value="">ALL</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.name}</option>;
+                                    return <option value={c.id}>{c.status}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -164,7 +168,7 @@ const CurrentEmployee = () => {
                             className='text-fldset'>
                             <option value="">SITE</option>
                             {employee.map((c) => {
-                                return <option value={c.id}>{c.name}</option>;
+                                return <option value={c.id}>{c.site}</option>;
                             })}
                         </select>
                         <label htmlFor="" className='label-fldset'>
@@ -177,7 +181,7 @@ const CurrentEmployee = () => {
                         <div className='form-fldset-1'>
                             <input type="text" placeholder='' className='text-fldset-1'
                                 onChange={handleFilter} id='searchInput'/>
-
+ 
                             <label htmlFor="searchInput" className='label-fldset-1'>
                                 Search <i className="bi bi-search icon-3" />
                             </label>
@@ -209,7 +213,7 @@ const CurrentEmployee = () => {
                       {records.map((e) => (
                         <tr>
                           <td>
-                            {e.id}
+                            {e.employeeId}
                           </td>
                           <td>
                             <div className='d-flex'>
@@ -230,22 +234,19 @@ const CurrentEmployee = () => {
                             </div>
                           </td>
                           <td>
-                            {e.reason}
+                            {e.category}
                           </td>
                           <td>
-                            {e.from_date}
+                            {e.fname}
                           </td>
                           <td>
-                            {e.to_date}
+                            {e.mobile}
                           </td>
                           <td>
-                            {e.status}
+                            {e.email}
                           </td>
                           <td>
-                            {e.status}
-                          </td>
-                          <td>
-                            {e.status}
+                            {e.jod}
                           </td>
                           <td>
                             {e.status}
@@ -255,6 +256,9 @@ const CurrentEmployee = () => {
                           </td>
                           <td>
                             {e.status}
+                          </td>
+                          <td>
+                            {e.site}
                           </td>
                           <td>
                             {e.status}
@@ -262,14 +266,14 @@ const CurrentEmployee = () => {
                           <td>
                         <Link
                           to={`/dashboard/editEmployeeIndivisual/` + e.id}
-                          
+                         
                         >
                             {/* btn btn-info btn-sm me-2  */}
                           <span className="edit_btn me-1">Edit</span>
                         </Link>
                         <span
                           className="edit_btn"
-                        //   btn btn-warning btn-sm 
+                        //   btn btn-warning btn-sm
                           onClick={() => handleDelete(e.id)}
                         >
                           Delete
@@ -277,7 +281,7 @@ const CurrentEmployee = () => {
                       </td>
                         </tr>
                       ))}
-
+ 
                     </tbody>
                   </table>
                 </div>
@@ -285,5 +289,5 @@ const CurrentEmployee = () => {
         </div>
     )
 }
-
-export default CurrentEmployee
+ 
+export default CurrentEmployee;
