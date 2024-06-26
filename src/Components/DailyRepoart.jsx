@@ -15,13 +15,18 @@ const DailyRepoart = () => {
     const [filterbyShift, setFilterbyShift] = useState('');
 
     useEffect(() => {
-        axios
-            .get("http://localhost:3000/auth/employee")
+      const token = localStorage.getItem('token');
+      axios
+      .get("https://emsproject-production.up.railway.app/api/employee/", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setEmployeeCopy(result.data.Result)
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setEmployeeCopy(result.data)
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -100,16 +105,16 @@ const DailyRepoart = () => {
                       {employee.map((e) => (
                         <tr>
                           <td>
-                            {e.id}
+                            {e.employeeId}
                           </td>
                           <td>
                             <div className='d-flex'>
-                              <div>
+                              {/* <div>
                                 <img
                                   src={`http://localhost:3000/Images/` + e.image}
                                   className="home_leave_image"
                                 />
-                              </div>
+                              </div> */}
                               <div className='ms-2 d-inline'>
                                 <div>
                                   {e.name}
@@ -121,13 +126,13 @@ const DailyRepoart = () => {
                             </div>
                           </td>
                           <td>
-                            {e.address}
+                            {e.site}
                           </td>
                           <td>
-                            {e.salary}
+                            {e.shift}
                           </td>
                           <td>
-                            {e.name}
+                            {e.category}
                           </td>
                           <td>
                             {e.to_date}

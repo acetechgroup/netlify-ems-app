@@ -14,13 +14,18 @@ const LeaveList = () => {
     const [filterbySite, setFilterbySite] = useState('');
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         axios
-            .get("http://localhost:3000/auth/employee")
+        .get("https://emsproject-production.up.railway.app/api/employee/", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setEmployeeCopy(result.data.Result)
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setEmployeeCopy(result.data)
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -155,16 +160,16 @@ const LeaveList = () => {
                             {records.map((e) => (
                                 <tr>
                                     <td>
-                                        {e.id}
+                                        {e.employeeId}
                                     </td>
                                     <td>
                                         {e.name}
                                     </td>
                                     <td>
-                                        {e.email}
+                                        {e.category}
                                     </td>
                                     <td>
-                                        {e.from_date}
+                                        {e.site}
                                     </td>
                                     <td>
                                         {e.address}
