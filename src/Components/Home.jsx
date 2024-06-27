@@ -8,6 +8,15 @@ import 'react-calendar/dist/Calendar.css';
 
 const Home = () => {
   const [adminTotal, setAdminTotal] = useState(0)
+  const [m, setM] = useState(0)
+  const [f, setF] = useState(0)
+  const [t, setT] = useState(0)
+  const [o, setO] = useState(0)
+  const [c, setC] = useState(0)
+  const [ti, setTi] = useState(0)
+  const [to, setTo] = useState(0)
+  const [e, setE] = useState(0)
+  const [n, setN] = useState(0)
   const [employeeTotal, setemployeeTotal] = useState(0)
   const [salaryTotal, setSalaryTotal] = useState(0)
   const [admins, setAdmins] = useState([])
@@ -20,7 +29,163 @@ const Home = () => {
     employeeCount();
     salaryCount();
     AdminRecords();
+    GenderM();
+    GenderF();
+    GenderT();
+    OpeningEmployees();
+    TransferredInEmployees();
+    TransferredOutEmployees();
+    NewJoinedEmployee();
+    ExitedEmployees();
+    ClosedEmployees();
   }, [])
+
+
+  const OpeningEmployees = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countc", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setO(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
+  const TransferredInEmployees = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countti", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setTi(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
+  const TransferredOutEmployees = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countto", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setTo(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
+  const NewJoinedEmployee = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countn", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setN(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
+  const ExitedEmployees = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countexit", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setE(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
+  const ClosedEmployees = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countex", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setC(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
+  
+  const GenderM = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countm", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setM(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
+  const GenderF = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countf", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setF(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
+  const GenderT = () => {
+    const token = localStorage.getItem('token');
+    axios
+    .get("https://emsproject-production.up.railway.app/api/employee/countt", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(result => {
+        if (result.data) {
+          setT(result.data)
+        } else {
+          alert(result.data.Error)
+        }
+      })
+  }
 
   const AdminRecords = () => {const token = localStorage.getItem('token');
     axios
