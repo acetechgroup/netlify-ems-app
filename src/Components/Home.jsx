@@ -630,7 +630,7 @@ const Home = () => {
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Exited Employees</div>
-                  <div>{emploeyeeTotal}</div>
+                  <div>{e}</div>
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Closing Employees</div>
