@@ -333,15 +333,15 @@ const Home = () => {
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Male :</div>
-                  <div>{employeeTotal}</div>
+                  <div>{m}</div>
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Female :</div>
-                  <div>{employeeTotal}</div>
+                  <div>{f}</div>
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Trans :</div>
-                  <div>{employeeTotal}</div>
+                  <div>{t}</div>
                 </div>
               </div>
             </Link>
@@ -614,27 +614,27 @@ const Home = () => {
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Opening Employees</div>
-                  <div>{employeeTotal}</div>
+                  <div>{o}</div>
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Transferred In Employees</div>
-                  <div>{employeeTotal}</div>
+                  <div>{ti}</div>
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>New Joined Employees</div>
-                  <div>{employeeTotal}</div>
+                  <div>{n}</div>
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Transferred Out Employees</div>
-                  <div>{employeeTotal}</div>
+                  <div>{to}</div>
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Exited Employees</div>
-                  <div>{employeeTotal}</div>
+                  <div>{emploeyeeTotal}</div>
                 </div>
                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                   <div>Closing Employees</div>
-                  <div>{employeeTotal}</div>
+                  <div>{c}</div>
                 </div>
               </div>
             </div>
