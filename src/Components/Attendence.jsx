@@ -122,7 +122,6 @@ const Attendence = () => {
         console.log(date);
     }
 
-    // const [empName, setEmpName] = useState()
 
     const handlePunch = (employeeId, name, punchType) => {
         if (document.getElementById('punchButton' + employeeId).innerText === 'Punch In') {
