@@ -4,25 +4,26 @@ import { CSVLink, CSVDownload } from "react-csv";
 
 const Attendence = () => {
 
-    const [date, setDate] = useState(Date)
+    const [date, setDate] = useState(new Date())
     const [admins, setAdmins] = useState([])
     const [category, setCategory] = useState([]);
     const [employee, setEmployee] = useState([]);
     const [records, setRecords] = useState([]);
 
-    
+
 
     useEffect(() => {
         AdminRecords();
     }, [])
 
-    const AdminRecords = () => {const token = localStorage.getItem('token');
+    const AdminRecords = () => {
+        const token = localStorage.getItem('token');
         axios
-        .get("https://emsproject-production.up.railway.app/auth/getUsers/", {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
-        })
+            .get("https://emsproject-production.up.railway.app/auth/getUsers/", {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             .then(result => {
                 if (result.data) {
                     setAdmins(result.data)
@@ -32,30 +33,32 @@ const Attendence = () => {
             })
     }
 
-    useEffect(() => {const token = localStorage.getItem('token');
+    useEffect(() => {
+        const token = localStorage.getItem('token');
         axios
-        .get("https://emsproject-production.up.railway.app/api/category/", {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
-        })
-          .then((result) => {
-            if (result.data) {
-              setCategory(result.data);
-            } else {
-              alert(result.data.Error);
-            }
-          })
-          .catch((err) => console.log(err));
-      }, []);
+            .get("https://emsproject-production.up.railway.app/api/category/", {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then((result) => {
+                if (result.data) {
+                    setCategory(result.data);
+                } else {
+                    alert(result.data.Error);
+                }
+            })
+            .catch((err) => console.log(err));
+    }, []);
 
-    useEffect(() => {const token = localStorage.getItem('token');
+    useEffect(() => {
+        const token = localStorage.getItem('token');
         axios
-        .get("https://emsproject-production.up.railway.app/api/employee/", {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
-        })
+            .get("https://emsproject-production.up.railway.app/api/employee/", {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             .then((result) => {
                 if (result.data) {
                     setEmployee(result.data);
@@ -72,10 +75,19 @@ const Attendence = () => {
         setRecords(employee.filter(f => f.name.toLowerCase().includes(event.target.value)))
     }
 
-    const [punchIn, setPunchIn] = useState(Date)
-    const [punchOut, setPunchOut] = useState(Date)
+    let time = new Date().toLocaleTimeString();
+    const [ctime, setCtime] = useState(time);
+
+    const updateTime = () => {
+        time = new Date().toLocaleTimeString();
+        setCtime(time);
+    }
+    setInterval(updateTime, 1000);
+
+
+
     const [status, setStatus] = useState('status_1')
-    
+
 
     const status_1 = [
         {
@@ -98,21 +110,48 @@ const Attendence = () => {
         }
     ]
 
-    const handlepunchIn = (e) => {
-        setPunchIn(e.target.value)
-        console.log(`Punch In Time: ${punchIn}`);
-    }
-    const handlepunchOut = (e) => {
-        setPunchOut(e.target.value)
-        console.log(`Punch Out Time: ${punchOut}`);
-    }
+
+
+
     const handleStatus = (e) => {
-        setStatus({...status_1, option1: e.target.value})
-        console.log({...status_1, option1: e.target.value});
+        setStatus({ ...status_1, option1: e.target.value })
+        console.log({ ...status_1, option1: e.target.value });
     }
-    const handleDate = (e)=>{
+    const handleDate = (e) => {
         setDate(e.target.value)
         console.log(date);
+    }
+
+    // const [empName, setEmpName] = useState()
+
+    const handlePunch = (employeeId, name, punchType) => {
+        if (document.getElementById('punchButton' + employeeId).innerText === 'Punch In') {
+            document.getElementById('punchButton' + employeeId).innerText = "Punch Out"
+
+            axios.post('http://localhost:3000/auth/attendence/', { name: name, employeeId: employeeId, punchIn: new Date().toLocaleString() })
+                .then(result => {
+                    if (result.data.Status) {
+                        navigate('/dashboard/attendence')
+                    } else {
+                        alert(result.data.Error)
+                    }
+                }).catch(err => console.log(err))
+
+        } else {
+            document.getElementById('punchButton' + employeeId).innerText = "Punch In"
+
+            axios.put('http://localhost:3000/auth/attendence/' + id, {punchOut: new Date().toLocaleString()})
+                .then(result => {
+                    if (result.data.Status) {
+                        navigate('/dashboard/attendence')
+                    } else {
+                        alert(result.data.Error)
+                    }
+                }).catch(err => console.log(err))
+
+        }
+
+        console.log(employeeId, name, new Date().toLocaleString(), document.getElementById('punchButton' + employeeId).innerText)
     }
 
     return (
@@ -149,7 +188,7 @@ const Attendence = () => {
                             <div>
                                 <button type="button" className="btn btn-outline-primary btn-sm rounded-0 me-2">Mark All Absent As Present</button>
                                 <CSVLink data={employee} filename='DailyReports'>
-                                <button type="button" className="btn btn-primary btn-sm rounded-0"> <i className="bi bi-download me-2"></i>Daily Repoart</button>
+                                    <button type="button" className="btn btn-primary btn-sm rounded-0"> <i className="bi bi-download me-2"></i>Daily Repoart</button>
                                 </CSVLink>
                             </div>
                         </div>
@@ -198,7 +237,7 @@ const Attendence = () => {
                             </div>
                             <div>
                                 <CSVLink data={records} filename='RegisterEmployeeData'>
-                                <button type="button" className="btn btn-outline-primary  rounded-0 me-0">Export Attendance</button>
+                                    <button type="button" className="btn btn-outline-primary  rounded-0 me-0">Export Attendance</button>
                                 </CSVLink>
                             </div>
                         </div>
@@ -207,52 +246,50 @@ const Attendence = () => {
                 <div className='row'>
                     <div className='col'>
                         <div>
-                        {/* table table-bordered */}
+                            {/* table table-bordered */}
                             <table className="table-content">
                                 <thead>
                                     <tr>
+                                        <th scope="col">Emp Id</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Punch-In</th>
-                                        <th scope="col">Punch-Out</th>
+                                        <th scope="col">Punch</th>
                                         <th scope="col">Status</th>
-                                        {/* <th scope="col">Action</th> */}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {records.map((e) => (
                                         <tr>
+                                            <td>{e.employeeId}</td>
                                             <td>
                                                 <img
                                                     src={`http://localhost:3000/Images/` + e.image}
                                                     className="employee_image"
+                                                    alt='Emp Img'
                                                 />
                                             </td>
                                             <td>{e.name}</td>
+
                                             <td>
-                                                <input
-                                                    type="time"
-                                                    placeholder='Punch In'
-                                                    onChange={handlepunchIn}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="time"
-                                                    placeholder='Punch Out'
-                                                    onChange={handlepunchOut}
-                                                />
+                                                <div>
+                                                    <button
+                                                        // type='button'
+                                                        className='punchbtn rounded-4'
+                                                        id={"punchButton" + e.employeeId}
+                                                        onClick={() => handlePunch(e.employeeId, e.name, 'Punch In')}>
+                                                        Punch In
+                                                    </button>
+                                                </div>
                                             </td>
                                             <td>
                                                 <select name="" id="" className='rounded-4'
                                                     onChange={handleStatus}>
-                                                        {/* <option value="">Select</option> */}
+                                                    {/* <option value="">Select</option> */}
                                                     {status_1.map((s) => {
                                                         return <option >{s.option1}</option>;
                                                     })}
                                                 </select>
                                             </td>
-                                            {/* <td><button className='btn bg-info-subtle rounded-5'>Update</button></td> */}
                                         </tr>
                                     ))}
 

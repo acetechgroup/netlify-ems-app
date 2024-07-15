@@ -2756,3 +2756,25 @@ input:focus {
     padding: 0 3px;
 }
 /* salery search input ends */
+
+.attendencepunch{
+    /* display: none; */
+    display: inline;
+}
+
+.emp-table{
+    overflow: scroll;
+    height: 100vh;
+    width: 83vw;
+    padding-bottom: 150px;
+}
+.punchbtn{
+    width: 100px;
+    height: 20px;
+    line-height: 15px;
+    font-size: 13px;
+    border: 1px solid #000;
+}
+.punchbtn:hover{
+    background-color: #c2c0c0;
+}

@@ -58,8 +58,8 @@ const Employee = () => {
                 </Link>
               </div>
             </div>
-            <div className="row mt-3">
-              <table className="table">
+            <div className="row mt-3 emp-table">
+              <table className="table-content">
                 <thead>
                   <tr>
                     <th>Name</th>
