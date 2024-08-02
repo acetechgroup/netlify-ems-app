@@ -2778,3 +2778,56 @@ input:focus {
 .punchbtn:hover{
     background-color: #c2c0c0;
 }
+
+/* Employee dashboard */
+.empDash{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 80px;
+}
+.dashCard {
+    border: 1px solid #f7dfdf;
+    border-radius: 15px;
+    margin-top: 10px;
+    height: 180px;
+    margin: 10px;
+    cursor: pointer;
+}
+.dashcard-1 {
+    background-image: linear-gradient(rgb(255, 220, 207), rgb(255, 246, 243));
+    border-radius: 14px 14px 0 0;
+}
+
+.dashcard-2 {
+    background-image: linear-gradient(rgb(218, 231, 255), rgb(245, 245, 255));
+    border-radius: 14px 14px 0 0;
+}
+.table-size-holiday {
+    height: 120px;
+    overflow-y: scroll;
+}
+/* Employee dashboard ends */
+
+/* Attendance Employee start */
+.punchIn {
+    background-color: rgba(0, 128, 58, 0.344);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .punchOut {
+    background-color: rgba(255, 0, 0, 0.4);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+/* Attendance Employee Ends */
+

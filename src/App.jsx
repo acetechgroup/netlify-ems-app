@@ -38,6 +38,9 @@ import ListReimbuesement from './Components/ListReimbuesement'
 import AttendanceRegularization from './Components/AttendanceRegularization'
 import OdList from './Components/OdList'
 import TaskList from './Components/TaskList'
+import EmpDashboard from './Components/EmpDashboard'
+import EmpAttendance from './Components/EmpAttendance'
+import EmpViewAttendance from './Components/EmpViewAttendance'
 
 function App() {
 
@@ -48,8 +51,17 @@ function App() {
         <Route path='/' element={<Start />}></Route>
         <Route path='/adminregistration' element={<AdminRegistration />}></Route>
         <Route path='/adminlogin' element={<Login />}></Route>
+
+        {/* Employee Section */}
         <Route path='/employee_login' element={<EmployeeLogin />}></Route>
-        <Route path='/employee_details/:id' element={<EmployeeDetail />}></Route>
+
+        {/* <Route path='/employee_detail/:id' element={<EmployeeDetail />}> */}
+        <Route path='/employee_detail' element={<EmployeeDetail />}>
+        <Route path='' element={<EmpDashboard />}></Route>
+        <Route path='/employee_detail/empAttendance' element={<EmpAttendance />}></Route>
+        <Route path='/employee_detail/empViewAttendance' element={<EmpViewAttendance />}></Route>
+        </Route>
+        {/* Employee Section Ends */}
 
         {/* Support Section Start*/}
 
