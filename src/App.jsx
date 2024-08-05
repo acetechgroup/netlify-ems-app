@@ -41,6 +41,10 @@ import TaskList from './Components/TaskList'
 import EmpDashboard from './Components/EmpDashboard'
 import EmpAttendance from './Components/EmpAttendance'
 import EmpViewAttendance from './Components/EmpViewAttendance'
+import RequestLeave from './Components/RequestLeave'
+import EmpHolidayList from './Components/EmpHolidayList'
+import EmpDocument from './Components/EmpDocument'
+import EmpTask from './Components/EmpTask'
 
 function App() {
 
@@ -60,6 +64,10 @@ function App() {
         <Route path='' element={<EmpDashboard />}></Route>
         <Route path='/employee_detail/empAttendance' element={<EmpAttendance />}></Route>
         <Route path='/employee_detail/empViewAttendance' element={<EmpViewAttendance />}></Route>
+        <Route path='/employee_detail/requestLeave' element={<RequestLeave />}></Route>
+        <Route path='/employee_detail/empHolidayList' element={<EmpHolidayList />}></Route>
+        <Route path='/employee_detail/empDocument' element={<EmpDocument />}></Route>
+        <Route path='/employee_detail/empTask' element={<EmpTask />}></Route>
         </Route>
         {/* Employee Section Ends */}
 

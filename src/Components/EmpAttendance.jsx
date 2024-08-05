@@ -51,7 +51,7 @@ function EmpAttendance() {
           setIsPunchedIn(true);
           setPunchInTime(new Date().toLocaleString()); // Set the punch-in time
           setTimer(0); // Reset timer when punching in
-          
+
         })
         .catch(error => {
           alert('Punch in failed: ' + error.response.data);
@@ -77,18 +77,30 @@ function EmpAttendance() {
   };
 
   return (
-    <div>
-      <h2>{isPunchedIn ? 'Punch Out' : 'Punch In'}</h2>
-      <button onClick={handlePunch} style={buttonStyle}>
-        {isPunchedIn ? 'Punch Out' : 'Punch In'}
-      </button>
-      {isPunchedIn && (
-        <div>
-          <p>Punch-in time: {punchInTime}</p>
-          <p>Time Elapsed: {formatTime(timer)}</p>
+    <>
+      <div className='emp_attandance_main'>
+        <div className='emp_attandance pt-2'>
+          {isPunchedIn ? 'Punch Out' : 'Punch In'}
         </div>
-      )}
-    </div>
+        <div className='emp_attandeance_1'>
+          <div>
+            <div>
+              <button onClick={handlePunch} style={buttonStyle}>
+                {isPunchedIn ? 'Punch Out' : 'Punch In'}
+              </button>
+            </div>
+            <div className='pt-4'>
+              {isPunchedIn && (
+                <div>
+                  <p>Punch-in time: {punchInTime}</p>
+                  <p>Time Elapsed: {formatTime(timer)}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

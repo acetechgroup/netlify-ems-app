@@ -2810,7 +2810,7 @@ input:focus {
 /* Employee dashboard ends */
 
 /* Attendance Employee start */
-.punchIn {
+/* .punchIn {
     background-color: rgba(0, 128, 58, 0.344);
     color: white;
     padding: 10px 20px;
@@ -2828,6 +2828,27 @@ input:focus {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-  }
+  } */
 /* Attendance Employee Ends */
+.emp_attandance_main{
+    width: 85vw;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 80px;
+}
+.emp_attandance{
+    text-align: center;
+    font-size: 30px;
+}
+.emp_attandeance_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+.emp_attandeance_2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 

@@ -164,7 +164,7 @@ const EmployeeDetail = () => {
 
                                 <li className="w-100">
                                     <NavLink
-                                        to={`/employee_detail4/` + id}
+                                        to={`/employee_detail/requestLeave`}
                                         className="nav-link px-0 align-middle text-white"
                                     >
                                         <i className="fs-4 bi-backpack2 ms-1"></i>
@@ -174,7 +174,7 @@ const EmployeeDetail = () => {
 
                                 <li className="w-100">
                                     <NavLink
-                                        to={`/employee_detail5/` + id}
+                                        to={`/employee_detail/empHolidayList`}
                                         className="nav-link px-0 align-middle text-white"
                                     >
                                         <i className="fs-4 bi-calendar2-event ms-1"></i>
@@ -184,7 +184,7 @@ const EmployeeDetail = () => {
 
                                 <li className="w-100">
                                     <NavLink
-                                        to={`/employee_detail6/` + id}
+                                        to={`/employee_detail/empDocument`}
                                         className="nav-link px-0 align-middle text-white"
                                     >
                                         <i className="fs-4 bi-folder2 ms-1"></i>
@@ -194,7 +194,7 @@ const EmployeeDetail = () => {
 
                                 <li className="w-100">
                                     <NavLink
-                                        to={`/employee_detail7/` + id}
+                                        to={`/employee_detail/empTask`}
                                         className="nav-link px-0 align-middle text-white"
                                     >
                                         <i className="fs-4 bi-journal-text ms-1"></i>
