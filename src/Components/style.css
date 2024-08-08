@@ -2852,3 +2852,15 @@ input:focus {
     align-items: center;
 }
 
+.holiCalender{
+    width: 85vw;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 80px;
+}
+.reqstLeave{
+    width: 85vw;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 80px;
+}
