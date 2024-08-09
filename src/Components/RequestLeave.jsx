@@ -28,7 +28,7 @@ const RequestLeave = () => {
      
         .then(result => {
             if(result.data) {
-                navigate('/dashboard/employee')
+                navigate('/employee_detail/requestLeave')
             } else {
                 alert(result.data.Error)
             }
