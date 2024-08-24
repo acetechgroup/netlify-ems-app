@@ -26,7 +26,7 @@ const Attendence = () => {
 
   const AdminRecords = () => {
     const token = localStorage.getItem('token');
-    axios.get("https://emsproject-production.up.railway.app/auth/getUsers/", {
+    axios.get("https://mohitbyproject-production.up.railway.app/api/user/", {
       headers: { "Authorization": `Bearer ${token}` }
     })
     .then(result => {
@@ -41,7 +41,7 @@ const Attendence = () => {
 
   const fetchCategories = () => {
     const token = localStorage.getItem('token');
-    axios.get("https://emsproject-production.up.railway.app/api/category/", {
+    axios.get("https://mohitbyproject-production.up.railway.app/api/category/", {
       headers: { "Authorization": `Bearer ${token}` }
     })
     .then(result => {
@@ -56,7 +56,7 @@ const Attendence = () => {
 
   const fetchEmployees = () => {
     const token = localStorage.getItem('token');
-    axios.get("https://emsproject-production.up.railway.app/api/employee/", {
+    axios.get("https://mohitbyproject-production.up.railway.app/api/employee/", {
       headers: { "Authorization": `Bearer ${token}` }
     })
     .then(result => {
@@ -90,7 +90,7 @@ const Attendence = () => {
 
     if (isPunchingIn) {
       punchButton.innerText = 'Punch Out';
-      axios.post('http://localhost:8080/api/Hello/punchIn', {
+      axios.post('https://mohitbyproject-production.up.railway.app/api/Hello/punchIn', {
         employeeName: name,
         employeeId: employeeId,
         punchIn: new Date().toLocaleString(),
@@ -100,7 +100,7 @@ const Attendence = () => {
         if (result.data) {
           setPunchRecords(prevState => ({
             ...prevState,
-            [employeeId]: result.data.id // Store the attendance ID
+            [employeeId]: result.data.attendanceId // Store the attendance ID
           }));
         } else {
           alert(result.data.Error);
@@ -110,7 +110,7 @@ const Attendence = () => {
     } else {
       const attendanceId = punchRecords[employeeId];
       punchButton.innerText = 'Punch In';
-      axios.put(`http://localhost:8080/api/Hello/punchOut/${attendanceId}`, {
+      axios.put(`https://mohitbyproject-production.up.railway.app/api/Hello/punchOut/${attendanceId}`, {
         // punchOut: new Date().toLocaleString()
       })
       .then(result => {
@@ -233,11 +233,16 @@ const Attendence = () => {
                     <tr key={e.employeeId}>
                       <td>{e.employeeId}</td>
                       <td>
-                        <img
+                      <img
+                                  src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
+                                  alt={`${e.zname}'s profile`}
+                                  className="employee_image"
+                                />
+                        {/* <img
                           src={`http://localhost:3000/Images/${e.image}`}
                           className="employee_image"
                           alt='Emp Img'
-                        />
+                        /> */}
                       </td>
                       <td>{e.name}</td>
                       <td>

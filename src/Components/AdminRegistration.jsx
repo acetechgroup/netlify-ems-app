@@ -21,7 +21,7 @@ const AdminRegistration = () => {
         formData.append('email', registration.email);
         formData.append('password', registration.password);
 
-        axios.post('https://emsproject-production.up.railway.app/auth/addUser', formData, {
+        axios.post('https://mohitbyproject-production.up.railway.app/api/user/', formData, {
             headers: {
                 'Content-Type': 'application/json',
             },

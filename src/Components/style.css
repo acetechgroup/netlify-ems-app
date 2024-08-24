@@ -2864,3 +2864,8 @@ input:focus {
     overflow-y: scroll;
     padding-bottom: 80px;
 }
+
+/* .table-size-task {
+    height: 120px;
+    overflow-y: scroll;
+} */

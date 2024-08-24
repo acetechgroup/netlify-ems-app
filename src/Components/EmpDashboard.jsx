@@ -16,7 +16,7 @@ const EmpDashboard = () => {
         },
         {
             name: 'Saroj',
-            Jan_24: 3000,
+            Jan_24: 4000,
             Feb_24: 1398,
             Mar_24: 2100,
             amt: 2210,

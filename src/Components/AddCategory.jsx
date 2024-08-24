@@ -9,7 +9,7 @@ const AddCategory = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const token = localStorage.getItem('token');
-        axios.post('https://emsproject-production.up.railway.app/api/category/', {categoryName:category},
+        axios.post('https://mohitbyproject-production.up.railway.app/api/category/', {categoryName:category},
             {
                 headers: {
                     "Authorization": `Bearer ${token}`
