@@ -136,10 +136,10 @@ const Employee = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = (employeeId) => {
     const token = localStorage.getItem("token");
     axios
-      .delete("https://mohitbyproject-production.up.railway.app/api/employee/" + id, {
+      .delete("https://mohitbyproject-production.up.railway.app/api/employee/" + employeeId, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

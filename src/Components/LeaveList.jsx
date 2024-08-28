@@ -15,12 +15,12 @@ const LeaveList = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setEmployeeCopy(result.data.Result)
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setEmployeeCopy(result.data)
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -82,7 +82,7 @@ const LeaveList = () => {
                                     className='text-fldset' >
                                     <option value="">Select Status</option>
                                     {employee.map((e) => {
-                                        return <option value={e.id} >{e.name}</option>;
+                                        return <option value={e.employeeId} >{e.site}</option>;
                                     })}
                                 </select>
                                 <label htmlFor="" className='label-fldset'>
@@ -98,7 +98,7 @@ const LeaveList = () => {
                                     className='text-fldset'>
                                     <option value="">Leave Type</option>
                                     {employee.map((c) => {
-                                        return <option value={c.id}>{c.name}</option>;
+                                        return <option value={c.employeeId}>{c.name}</option>;
                                     })}
                                 </select>
                                 <label htmlFor="" className='label-fldset'>
@@ -114,7 +114,7 @@ const LeaveList = () => {
                                     className='text-fldset' onChange={siteFilter}>
                                     <option value="">Select Site</option>
                                     {employee.map((c) => {
-                                        return <option value={c.address}>{c.address}</option>;
+                                        return <option value={c.site}>{c.site}</option>;
                                     })}
                                 </select>
                                 <label htmlFor="" className='label-fldset'>
@@ -155,19 +155,19 @@ const LeaveList = () => {
                             {records.map((e) => (
                                 <tr>
                                     <td>
-                                        {e.id}
+                                        {e.employeeId}
                                     </td>
                                     <td>
                                         {e.name}
                                     </td>
                                     <td>
-                                        {e.email}
+                                        {e.category}
                                     </td>
                                     <td>
                                         {e.from_date}
                                     </td>
                                     <td>
-                                        {e.address}
+                                        {e.site}
                                     </td>
                                     <td>
                                         {e.status}

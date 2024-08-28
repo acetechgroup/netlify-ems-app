@@ -19,11 +19,11 @@ const GeneratePayslip = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -33,10 +33,10 @@ const GeneratePayslip = () => {
     const handleFilter = (event) => {
         setRecords(employee.filter(f => f.name.toLowerCase().includes(event.target.value)))
     }
-    const handleDelete = (id) => {
-        axios.delete('http://localhost:3000/auth/delete_employee/' + id)
+    const handleDelete = (employeeId) => {
+        axios.delete('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
             .then(result => {
-                if (result.data.Status) {
+                if (result.data) {
                     window.location.reload()
                 } else {
                     alert(result.data.Error)
@@ -93,7 +93,7 @@ const GeneratePayslip = () => {
                                 className='text-fldset'>
                                 <option value="">STAFF</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.name}</option>;
+                                    return <option value={c.employeeId}>{c.name}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -110,7 +110,7 @@ const GeneratePayslip = () => {
                                 className='text-fldset'>
                                 <option value="">PENDING</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.name}</option>;
+                                    return <option value={c.employeeId}>{c.name}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -127,7 +127,7 @@ const GeneratePayslip = () => {
                                 className='text-fldset'>
                                 <option value="">DEPARTMENT</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.name}</option>;
+                                    return <option value={c.employeeId}>{c.category}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -162,7 +162,7 @@ const GeneratePayslip = () => {
                             className='text-fldset'>
                             <option value="">HEAD OFFICE</option>
                             {employee.map((c) => {
-                                return <option value={c.id}>{c.name}</option>;
+                                return <option value={c.employeeId}>{c.site}</option>;
                             })}
                         </select>
                         <label htmlFor="" className='label-fldset'>
@@ -210,13 +210,13 @@ const GeneratePayslip = () => {
                             {records.map((e) => (
                                 <tr>
                                     <td>
-                                        {e.id}
+                                        {e.employeeId}
                                     </td>
                                     <td>
                                         <div className='d-flex'>
                                             <div>
                                                 <img
-                                                    src={`http://localhost:3000/Images/` + e.image}
+                                                    src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
                                                     className="home_leave_image"
                                                 />
                                             </div>
@@ -225,44 +225,44 @@ const GeneratePayslip = () => {
                                                     {e.name}
                                                 </div>
                                                 <div>
-                                                    {e.designation}General Manager
+                                                    {e.category}
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        {e.reason}
+                                        {e.category}
                                     </td>
                                     <td>
-                                        {e.from_date}
+                                        {e.fname}
                                     </td>
                                     <td>
-                                        {e.to_date}
+                                        {e.mobile}
                                     </td>
                                     <td>
-                                        {e.status}
+                                        {e.email}
                                     </td>
                                     <td>
-                                        {e.status}
-                                    </td>
-                                    <td>
-                                        {e.status}
+                                        {e.jod}
                                     </td>
                                     <td>
                                         {e.status}
                                     </td>
                                     <td>
-                                        {e.status}
+                                        {e.work}
                                     </td>
                                     <td>
                                         {e.status}
                                     </td>
                                     <td>
-                                        {e.status}
+                                        {e.site}
+                                    </td>
+                                    <td>
+                                        {e.site}
                                     </td>
                                     <td>
                                         <Link
-                                            to={`/dashboard/editEmployeeIndivisual/` + e.id}
+                                            to={`/dashboard/editEmployeeIndivisual/` + e.employeeId}
 
                                         >
                                             {/* btn btn-info btn-sm me-2  */}
@@ -271,7 +271,7 @@ const GeneratePayslip = () => {
                                         <span
                                             className="edit_btn"
                                             //   btn btn-warning btn-sm 
-                                            onClick={() => handleDelete(e.id)}
+                                            onClick={() => handleDelete(e.employeeId)}
                                         >
                                             Delete
                                         </span>

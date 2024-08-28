@@ -10,7 +10,7 @@ const CurrentEmployee = () => {
  
     useEffect(() => {const token = localStorage.getItem('token');
         axios
-        .get("https://emsproject-production.up.railway.app/api/employee/", {
+        .get("https://mohitbyproject-production.up.railway.app/api/employee/", {
           headers: {
             "Authorization": `Bearer ${token}`
           }
@@ -28,10 +28,10 @@ const CurrentEmployee = () => {
     const handleFilter = (event) => {
         setRecords(employee.filter(f => f.name.toLowerCase().includes(event.target.value)))
     }
-    const handleDelete = (id) => {
-        axios.delete('http://localhost:3000/auth/delete_employee/' + id)
+    const handleDelete = (employeeId) => {
+        axios.delete('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
           .then(result => {
-            if (result.data.Status) {
+            if (result.data) {
               window.location.reload()
             } else {
               alert(result.data.Error)
@@ -65,7 +65,7 @@ const CurrentEmployee = () => {
                                     className='text-fldset'>
                                     <option value="">Gender</option>
                                     {employee.map((c) => {
-                                        return <option value={c.id}>{c.gender}</option>;
+                                        return <option value={c.employeeId}>{c.gender}</option>;
                                     })}
                                 </select>
                                 <label htmlFor="" className='label-fldset'>
@@ -101,7 +101,7 @@ const CurrentEmployee = () => {
                                 className='text-fldset'>
                                 <option value="">STAFF</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.name}</option>;
+                                    return <option value={c.employeeId}>{c.name}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -118,7 +118,7 @@ const CurrentEmployee = () => {
                                 className='text-fldset'>
                                 <option value="">SHIFT</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.work}</option>;
+                                    return <option value={c.employeeId}>{c.work}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -135,7 +135,7 @@ const CurrentEmployee = () => {
                                 className='text-fldset'>
                                 <option value="">DEPARTMENT</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.category}</option>;
+                                    return <option value={c.employeeId}>{c.category}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -152,7 +152,7 @@ const CurrentEmployee = () => {
                                 className='text-fldset'>
                                 <option value="">ALL</option>
                                 {employee.map((c) => {
-                                    return <option value={c.id}>{c.status}</option>;
+                                    return <option value={c.employeeId}>{c.status}</option>;
                                 })}
                             </select>
                             <label htmlFor="" className='label-fldset'>
@@ -168,7 +168,7 @@ const CurrentEmployee = () => {
                             className='text-fldset'>
                             <option value="">SITE</option>
                             {employee.map((c) => {
-                                return <option value={c.id}>{c.site}</option>;
+                                return <option value={c.employeeId}>{c.site}</option>;
                             })}
                         </select>
                         <label htmlFor="" className='label-fldset'>
@@ -219,7 +219,7 @@ const CurrentEmployee = () => {
                             <div className='d-flex'>
                               <div>
                                 <img
-                                  src={`http://localhost:3000/Images/` + e.image}
+                                  src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
                                   className="home_leave_image"
                                 />
                               </div>
@@ -228,7 +228,7 @@ const CurrentEmployee = () => {
                                   {e.name}
                                 </div>
                                 <div>
-                                  {e.designation}General Manager
+                                  {e.category}
                                 </div>
                               </div>
                             </div>
@@ -265,7 +265,7 @@ const CurrentEmployee = () => {
                           </td>
                           <td>
                         <Link
-                          to={`/dashboard/editEmployeeIndivisual/` + e.id}
+                          to={`/dashboard/editEmployeeIndivisual/` + e.employeeId}
                          
                         >
                             {/* btn btn-info btn-sm me-2  */}
@@ -274,7 +274,7 @@ const CurrentEmployee = () => {
                         <span
                           className="edit_btn"
                         //   btn btn-warning btn-sm
-                          onClick={() => handleDelete(e.id)}
+                          onClick={() => handleDelete(e.employeeId)}
                         >
                           Delete
                         </span>
