@@ -6,7 +6,7 @@ import { useReactToPrint } from 'react-to-print';
 
 const CalculateSalary = () => {
 
-    const [admins, setAdmins] = useState([])
+    const [payment, setPayment] = useState([])
     const [category, setCategory] = useState([]);
     const [employee, setEmployee] = useState([]);
     const [records, setRecords] = useState([]);
@@ -20,14 +20,14 @@ const CalculateSalary = () => {
     });
 
     useEffect(() => {
-        AdminRecords();
+        PaymentCount();
     }, [])
 
-    const AdminRecords = () => {
-        axios.get('http://localhost:3000/auth/admin_records')
+    const PaymentCount = () => {
+        axios.get('https://mohitbyproject-production.up.railway.app/api/employee/total')
             .then(result => {
-                if (result.data.Status) {
-                    setAdmins(result.data.Result)
+                if (result.data) {
+                    setPayment(result.data)
                 } else {
                     alert(result.data.Error)
                 }
@@ -36,10 +36,10 @@ const CalculateSalary = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/category")
+            .get("https://mohitbyproject-production.up.railway.app/api/category/")
             .then((result) => {
-                if (result.data.Status) {
-                    setCategory(result.data.Result);
+                if (result.data) {
+                    setCategory(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -49,12 +49,12 @@ const CalculateSalary = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setRecords(result.data.Result);
-                    setRecords2(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setRecords(result.data);
+                    setRecords2(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -110,8 +110,8 @@ const CalculateSalary = () => {
                                         <label className='me-2'>Branch</label><br />
                                         <select className="bg-white rounded-1 border-1" >
                                             <option >All Branches</option>
-                                            {admins.map((a) => {
-                                                return <option value={a.id}>{a.name}</option>;
+                                            {employee.map((a) => {
+                                                return <option value={a.employeeId}>{a.site}</option>;
                                             })}
                                         </select>
                                     </span>
@@ -174,15 +174,18 @@ const CalculateSalary = () => {
                                     <tbody>
                                         {records.map((e) => (
                                             <tr>
-                                                <td className="fw-light">{e.id}</td>
+                                                <td className="fw-light">{e.employeeId}</td>
                                                 <td className="fw-light">
                                                     {e.name}
                                                 </td>
-                                                <td className="fw-light">{admins.map((a) => {
+                                                <td className="fw-light">
+                                                    {/* {admins.map((a) => {
                                                         return <option value={a.id}>{a.name}</option>;
-                                                    })}</td>
-                                                <td className="fw-light">{e.email}</td>
-                                                <td className="fw-light">02-01-2024</td>
+                                                    })} */}
+                                                    {e.site}
+                                                </td>
+                                                <td className="fw-light">{e.mobile}</td>
+                                                <td className="fw-light">{e.jod}</td>
                                                 <td className='fw-light'>
                                                 <CSVLink data={employee} filename='GemeratedReports'>
                                                     Download
@@ -218,19 +221,19 @@ const CalculateSalary = () => {
                             <div className="row mt-4 ms-0 me-0 bgcolor text-center">
                                 <div className="col mt-3">
                                     <div className='rounded-0 border-4 border-end '>
-                                        <h1><i className="bi bi-currency-rupee"></i>0.00</h1>
+                                        <h1><i className="bi bi-currency-rupee"></i>{payment}</h1>
                                         <p className='fw-lighter'>Total Payable Amount</p>
                                     </div>
                                 </div>
                                 <div className="col mt-3">
                                     <div className='rounded-0 border-4 border-end '>
-                                        <h1><i className="bi bi-currency-rupee"></i>0.00</h1>
+                                        <h1><i className="bi bi-currency-rupee"></i>{payment}</h1>
                                         <p className='fw-lighter'>Total Paid Amount</p>
                                     </div>
                                 </div>
                                 <div className="col mt-3">
                                     <div className='rounded-0 '>
-                                        <h1><i className="bi bi-currency-rupee"></i>0.00</h1>
+                                        <h1><i className="bi bi-currency-rupee"></i>{payment}</h1>
                                         <p className='fw-lighter'>Total Balance</p>
                                     </div>
                                 </div>
@@ -280,16 +283,19 @@ const CalculateSalary = () => {
                                     <tbody>
                                     {records2.map((e) => (
                                             <tr>
-                                                <td className="fw-light">{e.id}</td>
+                                                <td className="fw-light">{e.employeeId}</td>
                                                 <td className="fw-light">
                                                     {e.name}
                                                 </td>
-                                                <td className="fw-light">{admins.map((a) => {
+                                                <td className="fw-light">
+                                                    {/* {admins.map((a) => {
                                                         return <option value={a.id}>{a.name}</option>;
-                                                    })}</td>
-                                                <td className="fw-light">{e.email}</td>
-                                                <td className="fw-light">02-01-2024</td>
-                                                <td className="fw-light">{e.designation} Software Engineer</td>
+                                                    })} */}
+                                                    {e.site}
+                                                </td>
+                                                <td className="fw-light">{e.mobile}</td>
+                                                <td className="fw-light">{e.jod}</td>
+                                                <td className="fw-light">{e.category}</td>
                                                 <td className='fw-light'>
                                                 <CSVLink data={employee} filename='GemeratedReports'>
                                                     Download

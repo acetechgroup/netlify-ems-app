@@ -117,27 +117,10 @@ const Dashboard = () => {
       <div className="container-fluid">
         <div className="row flex-nowrap main_div">
           <div className="col col-1 col-xl-2 px-sm-2 px-0 navbg">
-            {/* <Link 
-          to="/dashboard"
-          >
-          <div className="text-center pt-2 text-white">
-            <img src="/Images/Acetech-logo-1.png" alt="LOGO" className="logo_image" />
-          </div>
-          </Link> */}
+            
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white ">
 
-              {/* <Link
-              to="/dashboard"
-              className="pb-3 mb-md-1 mt-md-3  text-white text-decoration-none"
-            >
-              <div className="fw-bolder d-none d-sm-inline">
-                <span>
-                Acetech Group
-                </span>
-                <li className=" list-group-item disabled fs-6 fw-lighter">Company Code: abcdfjsn</li>
-              </div>
-
-            </Link> */}
+              
               <ul
                 className="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
 
@@ -175,15 +158,7 @@ const Dashboard = () => {
                     <span className="ms-2 d-none d-sm-inline">Category</span>
                   </NavLink>
                 </li>
-                {/* <li className="w-100">
-                <NavLink
-                  to="/dashboard/profile"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi-person ms-1"></i>
-                  <span className="ms-2 d-none d-sm-inline">Profile</span>
-                </NavLink>
-              </li> */}
+                
                 <li className="w-100">
                   <NavLink
                     to="/dashboard/attendence"
@@ -294,12 +269,13 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
       <div>
         {
           openProfile && <MiniDropdown onClose={() => setOpenProfile(false)} />
         }
-
       </div>
+      
       <div className="dash-footer">
         Copyright © <a href="#" className="dash-footer-link"> Acetech Work Organization Pvt. Ltd. </a> 2024.
       </div>

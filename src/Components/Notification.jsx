@@ -5,31 +5,31 @@ import { CSVLink, CSVDownload } from "react-csv";
 
 const Notification = () => {
 
-  const [admins, setAdmins] = useState([])
+  // const [admins, setAdmins] = useState([])
   const [category, setCategory] = useState([]);
   const [employee, setEmployee] = useState([]);
   const [records, setRecords] = useState([]);
   useEffect(() => {
-    AdminRecords();
+    // AdminRecords();
   }, [])
 
-  const AdminRecords = () => {
-    axios.get('http://localhost:3000/auth/admin_records')
-      .then(result => {
-        if (result.data.Status) {
-          setAdmins(result.data.Result)
-        } else {
-          alert(result.data.Error)
-        }
-      })
-  }
+  // const AdminRecords = () => {
+  //   axios.get('http://localhost:3000/auth/admin_records')
+  //     .then(result => {
+  //       if (result.data.Status) {
+  //         setAdmins(result.data.Result)
+  //       } else {
+  //         alert(result.data.Error)
+  //       }
+  //     })
+  // }
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/category")
+      .get("https://mohitbyproject-production.up.railway.app/api/category/")
       .then((result) => {
-        if (result.data.Status) {
-          setCategory(result.data.Result);
+        if (result.data) {
+          setCategory(result.data);
         } else {
           alert(result.data.Error);
         }
@@ -39,11 +39,11 @@ const Notification = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/employee")
+      .get("https://mohitbyproject-production.up.railway.app/api/employee/")
       .then((result) => {
-        if (result.data.Status) {
-          setEmployee(result.data.Result);
-          setRecords(result.data.Result);
+        if (result.data) {
+          setEmployee(result.data);
+          setRecords(result.data);
         } else {
           alert(result.data.Error);
         }
@@ -67,29 +67,29 @@ const Notification = () => {
 
             <select className="bg-white rounded-1 border-1 select-w text-dark">
               <option >All Notifications</option>
-              {category.map((c) => {
+              {/* {category.map((c) => {
                 return <option value={c.id}>{c.name}</option>;
-              })}
-              {/* <option value="1">Attendance</option>
+              })} */}
+              <option value="1">Attendance</option>
               <option value="2">Announcement</option>
               <option value="3">Notes</option>
               <option value="3">Leave Request</option>
               <option value="3">Payment</option>
-              <option value="3">Live Track</option> */}
+              <option value="3">Live Track</option>
             </select>
 
 
             <select className="bg-white rounded-1 border-1 select-w" >
               <option >All Branches</option>
-              {admins.map((a) => {
-                return <option value={a.id}>{a.name}</option>;
+              {employee.map((a) => {
+                return <option value={a.employeeId}>{a.site}</option>;
               })}
             </select>
 
             <select className="bg-white rounded-1 border-1 select-w" >
               <option >All Departments</option>
               {category.map((c) => {
-                return <option value={c.id}>{c.name}</option>;
+                return <option value={c.categoryId}>{c.categoryName}</option>;
               })}
             </select>
 
@@ -115,13 +115,13 @@ const Notification = () => {
                       {e.name}
                     </td>
                     <td class="fw-light">
-                      {admins.map((a) => {
+                      {/* {admins.map((a) => {
                         return <option value={a.id}>{a.name}</option>;
-                      })}
+                      })} */}
+                      {e.site}
                     </td>
                     <td class="fw-light">
-                      {e.category_id}
-                      
+                      {e.category}
                     </td>
                     <td class="fw-light">Not Loged In</td>
                     <td class="fw-light">{e.address}</td>

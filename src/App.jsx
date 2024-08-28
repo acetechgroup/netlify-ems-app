@@ -113,7 +113,7 @@ function App() {
           <Route path='/dashboard/document' element={<Document />}></Route>
           <Route path='/dashboard/settings' element={<Settings />}></Route>
           <Route path='/dashboard/add_employee' element={<AddEmployee />}></Route>
-          <Route path='/dashboard/edit_employee/:id' element={<EditEmployee />}
+          <Route path='/dashboard/edit_employee/:employeeId' element={<EditEmployee />}
           ></Route>
 
         </Route>

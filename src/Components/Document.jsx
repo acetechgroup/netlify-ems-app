@@ -8,21 +8,21 @@ const Document = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/employee")
+      .get("https://mohitbyproject-production.up.railway.app/api/employee/")
       .then((result) => {
-        if (result.data.Status) {
-          setEmployee(result.data.Result);
-          setRecords(result.data.Result);
+        if (result.data) {
+          setEmployee(result.data);
+          setRecords(result.data);
         } else {
           alert(result.data.Error);
         }
       })
       .catch((err) => console.log(err));
   }, []);
-  const handleDelete = (id) => {
-    axios.delete('http://localhost:3000/auth/delete_employee/' + id)
+  const handleDelete = (employeeId) => {
+    axios.delete('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
       .then(result => {
-        if (result.data.Status) {
+        if (result.data) {
           window.location.reload()
         } else {
           alert(result.data.Error)
@@ -71,8 +71,13 @@ const Document = () => {
                                             <tr>
                                                 <td>{e.name}</td>
                                                 <td>
-                                                    <img
+                                                    {/* <img
                                                         src={`http://localhost:3000/Images/` + e.image}
+                                                        className="employee_image"
+                                                    /> */}
+                                                    <img
+                                                        src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
+                                                        alt={`${e.zname}'s profile`}
                                                         className="employee_image"
                                                     />
                                                 </td>
@@ -81,14 +86,14 @@ const Document = () => {
                                                 <td>{e.salary}</td>
                                                 <td>
                                                     <Link
-                                                        to={`/dashboard/edit_employee/` + e.id}
+                                                        to={`/dashboard/edit_employee/` + e.employeeId}
                                                         className="btn btn-info btn-sm me-2"
                                                     >
                                                         Edit
                                                     </Link>
                                                     <button
                                                         className="btn btn-warning btn-sm"
-                                                        onClick={() => handleDelete(e.id)}
+                                                        onClick={() => handleDelete(e.employeeId)}
                                                     >
                                                         Delete
                                                     </button>

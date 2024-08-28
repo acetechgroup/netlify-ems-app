@@ -25,11 +25,11 @@ const AddPayment = () => {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/employee")
+      .get("https://mohitbyproject-production.up.railway.app/api/employee/")
       .then((result) => {
-        if (result.data.Status) {
-          setEmployee(result.data.Result);
-          setRecords(result.data.Result);
+        if (result.data) {
+          setEmployee(result.data);
+          setRecords(result.data);
         } else {
           alert(result.data.Error);
         }
@@ -40,7 +40,7 @@ const AddPayment = () => {
   const columns = [
     {
       name: 'EMP ID',
-      selector: row => row.id,
+      selector: row => row.employeeId,
       sortable: true
     },
     {
@@ -50,12 +50,13 @@ const AddPayment = () => {
     },
     {
       name: 'JOINING DATE',
-      selector: row => row.joining_date,
+      selector: row => row.jod,
       sortable: true
     },
     {
       name: 'CTC / MONTH',
       selector: row => (row.salary)*12,
+      
       sortable: true
     },
     {
@@ -65,22 +66,22 @@ const AddPayment = () => {
     },
     {
       name: 'PAID AMOUNT',
-      selector: row => row.paid_amount,
+      selector: row => row.salary,
       sortable: true
     },
     {
       name: 'REMAINING AMOUNT',
-      selector: row => row.remaining_amount,
+      selector: row => row.salary,
       sortable: true
     },
     {
       name: 'YTD BLANCE',
-      selector: row => row.ytd_blance,
+      selector: row => row.salary,
       sortable: true
     },
     {
       name: 'CALCULATION STATUS',
-      selector: row => row.calculation_status,
+      selector: row => row.salary,
       sortable: true
     },
   ]
@@ -146,8 +147,8 @@ const AddPayment = () => {
                 <label className='me-2'>Branch</label><br />
                 <select className="bg-white rounded-1 border-1 size-a" >
                   <option >All Branches</option>
-                  {admins.map((a) => {
-                    return <option value={a.id}>{a.name}</option>;
+                  {employee.map((a) => {
+                    return <option value={a.employeeId}>{a.site}</option>;
                   })}
                 </select>
               </span>

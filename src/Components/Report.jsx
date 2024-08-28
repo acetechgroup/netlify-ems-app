@@ -6,33 +6,46 @@ import { CSVLink, CSVDownload } from "react-csv";
 const Report = () => {
 
     const [date, setDate] = useState()
-    const [admins, setAdmins] = useState([])
+    // const [admins, setAdmins] = useState([])
+    // const [attendanceStatus, setAttendanceStatus] = useState([])
     const [category, setCategory] = useState([]);
     const [employee, setEmployee] = useState([]);
     const [records, setRecords] = useState([]);
 
 
     useEffect(() => {
-        AdminRecords();
+        // AdminRecords();
+        // AttendanceStatus();
     }, [])
 
-    const AdminRecords = () => {
-        axios.get('http://localhost:3000/auth/admin_records')
-            .then(result => {
-                if (result.data.Status) {
-                    setAdmins(result.data.Result)
-                } else {
-                    alert(result.data.Error)
-                }
-            })
-    }
+    // const AttendanceStatus = () => {
+    //     axios.get('https://mohitbyproject-production.up.railway.app/api/Hello')
+    //         .then(result => {
+    //             if (result.data) {
+    //                 setAttendanceStatus(result.data)
+    //             } else {
+    //                 alert(result.data.Error)
+    //             }
+    //         })
+    // }
+
+    // const AdminRecords = () => {
+    //     axios.get('http://localhost:3000/auth/admin_records')
+    //         .then(result => {
+    //             if (result.data.Status) {
+    //                 setAdmins(result.data.Result)
+    //             } else {
+    //                 alert(result.data.Error)
+    //             }
+    //         })
+    // }
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/category")
+            .get("https://mohitbyproject-production.up.railway.app/api/category/")
             .then((result) => {
-                if (result.data.Status) {
-                    setCategory(result.data.Result);
+                if (result.data) {
+                    setCategory(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -42,11 +55,11 @@ const Report = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -106,15 +119,15 @@ const Report = () => {
                                 <label className='me-2 '>Report Type</label><br />
                                 <select className="bg-white rounded-1 border-1" >
                                     <option value="">Select Report Type</option>
-                                    {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
-                                        })}
+                                    {/* {attendanceStatus.map((a) => {
+                                            return <option value={a.id}>{a.status}</option>;
+                                        })} */}
 
-                                    {/* <option selected>Attendance Summary Report</option>
+                                    <option selected>Attendance Summary Report</option>
                                     <option value="1">Deatailed Attendance Report</option>
                                     <option value="2">Late Arrival Report</option>
                                     <option value="3">Leave Report</option>
-                                    <option value="3">Over Time Report</option> */}
+                                    <option value="3">Over Time Report</option>
                                 </select>
                             </span>
                         </div>
@@ -123,8 +136,8 @@ const Report = () => {
                                 <label className='me-2'>Select Branch</label><br />
                                 <select className="bg-white rounded-1 border-1" >
                                     <option selected>All Branches</option>
-                                    {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
+                                    {employee.map((a) => {
+                                            return <option value={a.employeeId}>{a.site}</option>;
                                         })}
                                 </select>
                             </span>
@@ -135,7 +148,7 @@ const Report = () => {
                                 <select className="bg-white rounded-1 border-1" >
                                     <option selected>All Deapartment</option>
                                     {category.map((c) => {
-                                            return <option value={c.id}>{c.name}</option>;
+                                            return <option value={c.categoryId}>{c.categoryName}</option>;
                                         })}
                                 </select>
                             </span>
@@ -176,15 +189,15 @@ const Report = () => {
                                 <label className='me-2 '>Report Type</label><br />
                                 <select className="bg-white rounded-1 border-1" >
                                 <option value="">Select Report Type</option>
-                                    {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
-                                        })}
-                                    {/* <option selected>Salary Summary Report</option>
+                                    {/* {attendanceStatus.map((a) => {
+                                            return <option value={a.id}>{a.status}</option>;
+                                        })} */}
+                                    <option selected>Salary Summary Report</option>
                                     <option value="1">Salary Deatailed Report</option>
                                     <option value="2">PF Chalan Report</option>
                                     <option value="3">Loan Report</option>
                                     <option value="3">TDS Summary Report</option>
-                                    <option value="3">Consolidated Report</option> */}
+                                    <option value="3">Consolidated Report</option>
                                 </select>
                             </span>
                         </div>
@@ -193,8 +206,8 @@ const Report = () => {
                                 <label className='me-2'>Select Branch</label><br />
                                 <select className="bg-white rounded-1 border-1" >
                                     <option selected>All Branches</option>
-                                    {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
+                                    {employee.map((a) => {
+                                            return <option value={a.employeeId}>{a.site}</option>;
                                         })}
                                 </select>
                             </span>
@@ -205,7 +218,7 @@ const Report = () => {
                                 <select className="bg-white rounded-1 border-1" >
                                     <option selected>All Deapartment</option>
                                     {category.map((c) => {
-                                            return <option value={c.id}>{c.name}</option>;
+                                            return <option value={c.categoryId}>{c.categoryName}</option>;
                                         })}
                                 </select>
                             </span>
@@ -246,11 +259,11 @@ const Report = () => {
                                 <label className='me-2 '>Report Type</label><br />
                                 <select className="bg-white rounded-1 border-1" >
                                     <option value="">Select Reports</option>
-                                {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
-                                        })}
-                                    {/* <option selected>Notes Report</option>
-                                    <option value="1">Report</option> */}
+                                {/* {attendanceStatus.map((a) => {
+                                            return <option value={a.id}>{a.status}</option>;
+                                        })} */}
+                                    <option selected>Notes Report</option>
+                                    <option value="1">Report</option>
                                 </select>
                             </span>
                         </div>
@@ -259,8 +272,8 @@ const Report = () => {
                                 <label className='me-2'>Select Branch</label><br />
                                 <select className="bg-white rounded-1 border-1" >
                                     <option selected>All Branches</option>
-                                    {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
+                                    {employee.map((a) => {
+                                            return <option value={a.employeeId}>{a.site}</option>;
                                         })}
                                 </select>
                             </span>
@@ -271,7 +284,7 @@ const Report = () => {
                                 <select className="bg-white rounded-1 border-1" >
                                     <option selected>All Deapartment</option>
                                     {category.map((c) => {
-                                            return <option value={c.id}>{c.name}</option>;
+                                            return <option value={c.categoryId}>{c.categoryName}</option>;
                                         })}
                                 </select>
                             </span>
@@ -312,14 +325,14 @@ const Report = () => {
                                 <label className='me-2 '>Report Type</label><br />
                                 <select className="bg-white rounded-1 border-1" >
                                     <option value="">Select Summary Report</option>
-                                {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
-                                        })}
-                                    {/* <option selected>Attendance Summary Report</option>
+                                {/* {attendanceStatus.map((a) => {
+                                            return <option value={a.id}>{a.status}</option>;
+                                        })} */}
+                                    <option selected>Attendance Summary Report</option>
                                     <option value="1">Deatailed Attendance Report</option>
                                     <option value="2">Late Arrival Report</option>
                                     <option value="3">Leave Report</option>
-                                    <option value="3">Over Time Report</option> */}
+                                    <option value="3">Over Time Report</option>
                                 </select>
                             </span>
                         </div>
@@ -328,8 +341,8 @@ const Report = () => {
                                 <label className='me-2'>Select Branch</label><br />
                                 <select className="bg-white rounded-1 border-1" >
                                     <option selected>All Branches</option>
-                                    {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
+                                    {employee.map((a) => {
+                                            return <option value={a.employeeId}>{a.site}</option>;
                                         })}
                                 </select>
                             </span>
@@ -340,7 +353,7 @@ const Report = () => {
                                 <select className="bg-white rounded-1 border-1" >
                                     <option selected>All Deapartment</option>
                                     {category.map((c) => {
-                                            return <option value={c.id}>{c.name}</option>;
+                                            return <option value={c.categoryId}>{c.categoryName}</option>;
                                         })}
                                 </select>
                             </span>
@@ -385,7 +398,7 @@ const Report = () => {
                         <table className="table-content">
                             <thead >
                                 <tr>
-                                    <th class="fw-medium">REPORT TYPE</th>
+                                    <th class="fw-medium">NAME</th>
                                     <th class="fw-medium">Branch</th>
                                     <th class="fw-medium">MONTH</th>
                                     <th class="fw-medium">FORMAT</th>
@@ -397,16 +410,17 @@ const Report = () => {
                             {records.map((e) => (
                                 <tr>
                                     <td class="fw-light">
-                                        {e.name} Daily Attendance Report
+                                        {e.name}
                                     </td>
                                     <td class="fw-light">
-                                        {admins.map((a) => {
-                                            return <option value={a.id}>{a.name}</option>;
-                                        })}
+                                        {/* {employee.map((a) => {
+                                            return <option value={a.employeeId}>{a.site}</option>;
+                                        })} */}
+                                        {e.site}
                                     </td>
-                                    <td class="fw-light">Jan 2024</td>
+                                    <td class="fw-light">{e.jod}</td>
                                     <td class="fw-light">XLSX</td>
-                                    <td class="fw-light">02-01-2024</td>
+                                    <td class="fw-light">{e.jod}</td>
                                     <td>
                                         <CSVLink data={employee} filename='GemeratedReports'>
                                         {/* <Link to='#' className='link-underline-light fw-light'> */}
