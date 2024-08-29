@@ -17,12 +17,12 @@ const AttendanceRegularization = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setEmployeeCopy(result.data.Result)
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setEmployeeCopy(result.data)
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -96,13 +96,13 @@ const AttendanceRegularization = () => {
                       {employee.map((e) => (
                         <tr>
                           <td>
-                            {e.id}
+                            {e.employeeId}
                           </td>
                           <td>
                             <div className='d-flex'>
                               <div>
                                 <img
-                                  src={`http://localhost:3000/Images/` + e.image}
+                                  src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
                                   className="home_leave_image"
                                 />
                               </div>
@@ -111,7 +111,7 @@ const AttendanceRegularization = () => {
                                   {e.name}
                                 </div>
                                 <div>
-                                  {e.designation}General Manager
+                                  {e.category}
                                 </div>
                               </div>
                             </div>
@@ -123,17 +123,17 @@ const AttendanceRegularization = () => {
                             {e.salary}
                           </td>
                           <td>
-                            {e.name}
+                            {e.site}
                           </td>
                           <td>
-                            {e.to_date}
+                            {e.jod}
                           </td>
                           <td>
                             {e.status}
                           </td>
                           <td>
                             <div className='status-field'>
-                                {e.id}
+                                {e.status}
                             </div>
                           </td>
                           <td>

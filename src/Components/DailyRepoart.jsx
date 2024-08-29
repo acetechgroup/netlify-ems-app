@@ -29,6 +29,8 @@ const DailyRepoart = () => {
             .catch((err) => console.log(err));
     }, []);
 
+    
+
     useEffect(() => {
       setEmployee(employeeCopy.filter(f => f.name.toLowerCase().includes(openReportFilterSearchText)))
   }, [openReportFilterSearchText]);
@@ -137,7 +139,9 @@ const DailyRepoart = () => {
                           </td>
                           <td>
                             <div className='status-field'>
-                                {e.employeeId}
+                                {/* {e.employeeId} */}
+                                {/* {attendanceStatus.map((a)=>())} */}
+                                {e.status}
                             </div>
                           </td>
                           <td>

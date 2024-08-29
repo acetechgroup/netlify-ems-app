@@ -15,12 +15,12 @@ const OdList = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setEmployeeCopy(result.data.Result)
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setEmployeeCopy(result.data)
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -81,7 +81,7 @@ const OdList = () => {
                                     className='text-fldset' >
                                     <option value="">Select Status</option>
                                     {employee.map((e) => {
-                                        return <option value={e.id} >{e.name}</option>;
+                                        return <option value={e.employeeId} >{e.name}</option>;
                                     })}
                                 </select>
                                 <label htmlFor="" className='label-fldset'>
@@ -131,7 +131,7 @@ const OdList = () => {
                             {records.map((e) => (
                                 <tr>
                                     <td>
-                                        {e.id}
+                                        {e.employeeId}
                                     </td>
                                     <td>
                                         {e.name}
@@ -140,22 +140,22 @@ const OdList = () => {
                                         {e.email}
                                     </td>
                                     <td>
-                                        {e.from_date}
+                                        {e.jod}
                                     </td>
                                     <td>
                                         {e.address}
                                     </td>
                                     <td>
-                                        {e.status}
+                                        {e.site}
                                     </td>
                                     <td>
                                         {e.status}
                                     </td>
                                     <td>
-                                        {e.status}
+                                        {e.work}
                                     </td>
                                     <td>
-                                        {e.status}
+                                        {e.dob}
                                     </td>
                                     <td>
                                         {e.status}

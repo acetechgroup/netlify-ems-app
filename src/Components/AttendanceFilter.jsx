@@ -14,11 +14,11 @@ function AttendanceFilter({ onClose, setOpenReportFilterSearchText, setFilterbyD
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }

@@ -18,11 +18,11 @@ const ListReimbuesement = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -32,10 +32,10 @@ const ListReimbuesement = () => {
     const handleFilter = (event) => {
         setRecords(employee.filter(f => f.name.toLowerCase().includes(event.target.value)))
     }
-    const handleDelete = (id) => {
-        axios.delete('http://localhost:3000/auth/delete_employee/' + id)
+    const handleDelete = (employeeId) => {
+        axios.delete('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
             .then(result => {
-                if (result.data.Status) {
+                if (result.data) {
                     window.location.reload()
                 } else {
                     alert(result.data.Error)
@@ -103,13 +103,13 @@ const ListReimbuesement = () => {
                             {records.map((e) => (
                                 <tr>
                                     <td>
-                                        {e.id}
+                                        {e.employeeId}
                                     </td>
                                     <td>
                                         <div className='d-flex'>
                                             <div>
                                                 <img
-                                                    src={`http://localhost:3000/Images/` + e.image}
+                                                    src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
                                                     className="home_leave_image"
                                                 />
                                             </div>
@@ -118,7 +118,7 @@ const ListReimbuesement = () => {
                                                     {e.name}
                                                 </div>
                                                 <div>
-                                                    {e.designation}General Manager
+                                                    {e.category}General Manager
                                                 </div>
                                             </div>
                                         </div>
@@ -127,13 +127,13 @@ const ListReimbuesement = () => {
                                         {e.reason}
                                     </td>
                                     <td>
-                                        {e.from_date}
+                                        {e.jod}
                                     </td>
                                     <td>
                                         {e.to_date}
                                     </td>
                                     <td>
-                                        {e.status}
+                                        {e.site}
                                     </td>
                                     <td>
                                         {e.status}
@@ -155,7 +155,7 @@ const ListReimbuesement = () => {
                                     </td>
                                     <td>
                                         <Link
-                                            to={`/dashboard/editEmployeeIndivisual/` + e.id}
+                                            to={`/dashboard/editEmployeeIndivisual/` + e.employeeId}
 
                                         >
                                             {/* btn btn-info btn-sm me-2  */}
@@ -164,7 +164,7 @@ const ListReimbuesement = () => {
                                         <span
                                             className="edit_btn"
                                             //   btn btn-warning btn-sm 
-                                            onClick={() => handleDelete(e.id)}
+                                            onClick={() => handleDelete(e.employeeId)}
                                         >
                                             Delete
                                         </span>

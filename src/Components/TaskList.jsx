@@ -17,12 +17,12 @@ const TaskList = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/auth/employee")
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
             .then((result) => {
-                if (result.data.Status) {
-                    setEmployee(result.data.Result);
-                    setEmployeeCopy(result.data.Result)
-                    setRecords(result.data.Result);
+                if (result.data) {
+                    setEmployee(result.data);
+                    setEmployeeCopy(result.data)
+                    setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
@@ -89,22 +89,22 @@ const TaskList = () => {
                       {employee.map((e) => (
                         <tr>
                           <td>
-                            {e.id}
+                            {e.employeeId}
                           </td>
                           
                           <td>
-                            <div className='status-field'>
-                                {e.id}
+                            {e.name}
+                          </td>
+                          <td>
+                            {e.status}
+                          </td>
+                          <td>
+                            {e.status}
+                          </td>
+                          <td>
+                          <div className='status-field'>
+                                {e.status}
                             </div>
-                          </td>
-                          <td>
-                            {e.status}
-                          </td>
-                          <td>
-                            {e.status}
-                          </td>
-                          <td>
-                            {e.status}
                           </td>
                         </tr>
                       ))}
