@@ -13,22 +13,32 @@ const EmployeeMenu = () => {
         <ul className="nav nav-underline justify-content-between border-bottom">
           <li className="nav-item">
             <Link to="/dashboard/employee"
-              className="nav-link text-dark active" aria-current="page">Employee Details</Link>
+              className="nav-link text-dark active p-2" aria-current="page">Employee Details</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" aria-disabled="true">Attendance Details</a>
+            <a className="nav-link p-2" aria-disabled="true">
+              Attendance Details
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" aria-disabled="true">Bank Details</a>
+            <a className="nav-link disabled p-2" aria-disabled="true">
+              Bank Details
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" aria-disabled="true">Salary Details</a>
+            <a className="nav-link disabled p-2" aria-disabled="true">
+              Salary Details
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" aria-disabled="true">Leave Balance & Policy</a>
+            <a className="nav-link disabled p-2" aria-disabled="true">
+              Leave Balance & Policy
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" aria-disabled="true">Penalty & Overtime</a>
+            <a className="nav-link disabled p-2" aria-disabled="true">
+              Penalty & Overtime
+            </a>
           </li>
         </ul>
       </div>

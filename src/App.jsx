@@ -45,6 +45,8 @@ import RequestLeave from './Components/RequestLeave'
 import EmpHolidayList from './Components/EmpHolidayList'
 import EmpDocument from './Components/EmpDocument'
 import EmpTask from './Components/EmpTask'
+import AddTask from './Components/AddTask'
+import AssignTask from './Components/AssignTask'
 
 function App() {
 
@@ -111,6 +113,8 @@ function App() {
           <Route path='/dashboard/pay-employees' element={<PayEmployees />}></Route>
           <Route path='/dashboard/live-location' element={<LiveLocation />}></Route>
           <Route path='/dashboard/document' element={<Document />}></Route>
+          <Route path='/dashboard/addtask' element={<AddTask />}></Route>
+          <Route path='/dashboard/assigntask/:employeeId' element={<AssignTask />}></Route>
           <Route path='/dashboard/settings' element={<Settings />}></Route>
           <Route path='/dashboard/add_employee' element={<AddEmployee />}></Route>
           <Route path='/dashboard/edit_employee/:employeeId' element={<EditEmployee />}

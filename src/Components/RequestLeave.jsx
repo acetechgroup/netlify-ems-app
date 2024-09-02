@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const RequestLeave = () => {
 
@@ -8,6 +10,7 @@ const RequestLeave = () => {
         leaveFrom: "",
         leaveTo: ""
     });
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -20,7 +23,7 @@ const RequestLeave = () => {
         const token = localStorage.getItem('token');
      
      
-        axios.post('https://emsproject-production.up.railway.app/api/leave/', formData
+        axios.post('https://mohitbyproject-production.up.railway.app/api/post', formData
         ,{  headers: {
           "content-type": "application/json",
           "Authorization": `Bearer ${token}` // Include the token in the Authorization header
@@ -28,6 +31,7 @@ const RequestLeave = () => {
      
         .then(result => {
             if(result.data) {
+                alert('Task added successfully!')
                 navigate('/employee_detail/requestLeave')
             } else {
                 alert(result.data.Error)
@@ -40,7 +44,7 @@ const RequestLeave = () => {
         { leaveName: 'Sick leave (SL)' },
         { leaveName: 'Casual Leave (CL)' },
         { leaveName: 'Privilege Leave/Earned Leave/Annual Leave' },
-        { leaveName: 'Paternity leaves' },
+        { leaveName: 'Maternity leaves' },
         { leaveName: 'Marriage leave' },
         { leaveName: 'Sabbatical Leave' },
         { leaveName: 'Bereavement leave' },
@@ -93,7 +97,6 @@ const RequestLeave = () => {
                                     id="inputName"
                                     placeholder="Enter your Remaks"
                                     rows="3"
-                                    // cols="150"
                                   onChange={(e) =>
                                     setLeave({ ...leave, remark: e.target.value })
                                   }
@@ -107,7 +110,6 @@ const RequestLeave = () => {
                                     type="date"
                                     className="form-control rounded-0"
                                     id="inputName"
-                                    // placeholder="Enter Name"
                                   onChange={(e) =>
                                     setLeave({ ...leave, leaveFrom: e.target.value })
                                   }
@@ -121,7 +123,6 @@ const RequestLeave = () => {
                                     type="date"
                                     className="form-control rounded-0"
                                     id="inputName"
-                                    // placeholder="Enter Name"
                                   onChange={(e) =>
                                     setLeave({ ...leave, leaveTo: e.target.value })
                                   }

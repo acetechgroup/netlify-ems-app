@@ -14,10 +14,10 @@ const Dashboard = () => {
   }, [])
 
   const AdminRecords = () => {
-    axios.get('http://localhost:3000/auth/admin_records')
+    axios.get('https://mohitbyproject-production.up.railway.app/api/user/')
       .then(result => {
-        if (result.data.Status) {
-          setAdmins(result.data.Result)
+        if (result.data) {
+          setAdmins(result.data)
         } else {
           alert(result.data.Error)
         }
@@ -90,13 +90,13 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="header-main-5">
-            <div className="btn-head" role="button">
+            {/* <div className="btn-head" role="button">
               {admins.map((e) => (
                 <div className="btn-head-1">
-                  Site : {e.name}
+                  Name : {e.name}
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
           <div className="header-main-5 ms-3">
             <div className="line-1"></div>
@@ -232,6 +232,15 @@ const Dashboard = () => {
                   >
                     <i className="fs-4 bi-journal ms-1"></i>
                     <span className="ms-2 d-none d-sm-inline">Document</span>
+                  </NavLink>
+                </li>
+                <li className="w-100">
+                  <NavLink
+                    to="/dashboard/addtask"
+                    className="nav-link px-0 align-middle text-white"
+                  >
+                    <i className="fs-4 bi-journal ms-1"></i>
+                    <span className="ms-2 d-none d-sm-inline">Task</span>
                   </NavLink>
                 </li>
                 <li className="w-100">

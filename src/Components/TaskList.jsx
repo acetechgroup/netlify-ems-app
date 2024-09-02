@@ -7,6 +7,7 @@ const TaskList = () => {
     const[date, setDate] = useState(new Date())
     const [employee, setEmployee] = useState([]);
     const [employeeCopy, setEmployeeCopy] = useState([]);
+    const [task, setTask] = useState([]);
 
     const [openReportFilter, setOpenReportFilter] = useState(false);
 
@@ -22,13 +23,27 @@ const TaskList = () => {
                 if (result.data) {
                     setEmployee(result.data);
                     setEmployeeCopy(result.data)
-                    setRecords(result.data);
+                    // setRecords(result.data);
+                } else {
+                    alert(result.data.Error);
+                }
+            })
+            .catch((err) => console.log(err));
+        axios
+            .get("https://mohitbyproject-production.up.railway.app/api/tasks")
+            .then((result) => {
+                if (result.data) {
+                    setTask(result.data);
+                    // setEmployeeCopy(result.data)
+                    // setRecords(result.data);
                 } else {
                     alert(result.data.Error);
                 }
             })
             .catch((err) => console.log(err));
     }, []);
+
+    
 
     useEffect(() => {
       setEmployee(employeeCopy.filter(f => f.name.toLowerCase().includes(openReportFilterSearchText)))
@@ -49,7 +64,7 @@ const TaskList = () => {
     // console.log('event.target.value',openReportFilterSearchText )
     // console.log('event.target.value',filterbyDepartment )
     // console.log('event.target.value',filterbySite )
-    console.log('event.target.value',filterbyShift )
+    // console.log('event.target.value',filterbyShift )
 
     // const [records, setRecords] = useState(data)
     // const handleFilter = (event) => {
@@ -82,11 +97,13 @@ const TaskList = () => {
                         <th>Employee Name</th>
                         <th>Task Id</th>
                         <th>Task Name</th>
+                        <th>Assign Date</th>
+                        <th>Completed Date</th>
                         <th>Task Status</th>
                       </tr>
                     </thead>
                     <tbody >
-                      {employee.map((e) => (
+                      {task.map((e) => (
                         <tr>
                           <td>
                             {e.employeeId}
@@ -96,10 +113,30 @@ const TaskList = () => {
                             {e.name}
                           </td>
                           <td>
-                            {e.status}
+                            {e.taskId}
                           </td>
                           <td>
-                            {e.status}
+                            {e.taskName}
+                          </td>
+                          <td>
+                            {/* Format each employee's date */}
+                            {new Intl.DateTimeFormat('en-GB', {
+                              day: 'numeric',
+                              month: 'short', // Use 'short' for abbreviated month names
+                              year: 'numeric',
+                            }).format(new Date(e.assign))}
+                          </td>
+                          <td>
+                            {/* Format each employee's date */}
+                            {new Intl.DateTimeFormat('en-US', {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                              second: '2-digit',
+                              hour12: true,
+                            }).format(new Date(e.assign))}
                           </td>
                           <td>
                           <div className='status-field'>

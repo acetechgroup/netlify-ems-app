@@ -8,54 +8,23 @@ const EmpDashboard = () => {
 
     const data = [
         {
-            name: 'Ram',
-            Jan_24: 1000,
-            Feb_24: 2400,
-            Mar_24: 2000,
-            amt: 2400,
+            name: 'Jan',
+            present: 20,
+            half_Day: 5,
+            absent: 1,
         },
         {
-            name: 'Saroj',
-            Jan_24: 4000,
-            Feb_24: 1398,
-            Mar_24: 2100,
-            amt: 2210,
+            name: 'Feb',
+            present: 15,
+            half_Day: 4,
+            absent: 7,
         },
         {
-            name: 'Mohit',
-            Jan_24: 2000,
-            Feb_24: 9800,
-            Mar_24: 1900,
-            amt: 2290,
-        },
-        {
-            name: 'Deepak',
-            Jan_24: 2780,
-            Feb_24: 3908,
-            Mar_24: 7000,
-            amt: 2000,
-        },
-        {
-            name: 'Raushan',
-            Jan_24: 1890,
-            Feb_24: 4800,
-            Mar_24: 2200,
-            amt: 2181,
-        },
-        {
-            name: 'Raja',
-            Jan_24: 2390,
-            Feb_24: 3800,
-            Mar_24: 2300,
-            amt: 2500,
-        },
-        {
-            name: 'Dhirendra',
-            Jan_24: 1490,
-            Feb_24: 4300,
-            Mar_24: 9800,
-            amt: 2100,
-        },
+            name: 'March',
+            present: 18,
+            half_Day: 6,
+            absent: 2,
+        }
     ];
 
     const [m, setM] = useState(0)
@@ -204,9 +173,9 @@ const EmpDashboard = () => {
                             <YAxis />
                             <Tooltip />
                             <Legend />
-                            <Bar dataKey="Jan_24" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-                            {/* <Bar dataKey="Feb_24" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} /> */}
-                            {/* <Bar dataKey="Mar_24" fill="#fc03c6" activeBar={<Rectangle fill="red" stroke="green" />} /> */}
+                            <Bar dataKey="present" fill="#008000" activeBar={<Rectangle fill="#006400" stroke="#00F700" />} />
+                            <Bar dataKey="half_Day" fill="#f4d03f" activeBar={<Rectangle fill="#FFC300" stroke="#b7950b" />} />
+                            <Bar dataKey="absent" fill="#f71409" activeBar={<Rectangle fill="#f02218" stroke="#bb120a" />} />
                         </BarChart>
                         {/* </ResponsiveContainer> */}
                     </div>
@@ -230,9 +199,9 @@ const EmpDashboard = () => {
                             <YAxis />
                             <Tooltip />
                             <Legend />
-                            <Line type="monotone" dataKey="Jan_24" stroke="#8884d8" activeDot={{ r: 8 }} />
-                            {/* <Line type="monotone" dataKey="Feb_24" stroke="#82ca9d" /> */}
-                            {/* <Line type="monotone" dataKey="Mar_24" stroke="#fc03c6" /> */}
+                            <Line type="monotone" dataKey="present" stroke="#8884d8" activeDot={{ r: 8 }} />
+                            <Line type="monotone" dataKey="half_Day" stroke="#82ca9d" />
+                            <Line type="monotone" dataKey="absent" stroke="#fc03c6" />
                         </LineChart>
                         {/* </ResponsiveContainer> */}
                     </div>
@@ -256,9 +225,9 @@ const EmpDashboard = () => {
                             <YAxis />
                             <Tooltip />
                             <Legend />
-                            <Area type="monotone" dataKey="Jan_24" stroke="#8884d8" fill="#8884d8" />
-                            {/* <Area type="monotone" dataKey="Feb_24" stroke="#82ca9d" fill="#8884d8" /> */}
-                            {/* <Area type="monotone" dataKey="Mar_24" stroke="#fc03c6" fill="#8884d8" /> */}
+                            <Area type="monotone" dataKey="present" stroke="#8884d8" fill="#8884d8" />
+                            <Area type="monotone" dataKey="half_Day" stroke="#82ca9d" fill="#8884d8" />
+                            <Area type="monotone" dataKey="absent" stroke="#fc03c6" fill="#8884d8" />
                         </AreaChart>
                         {/* </ResponsiveContainer> */}
                     </div>
