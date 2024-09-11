@@ -47,6 +47,9 @@ import EmpDocument from './Components/EmpDocument'
 import EmpTask from './Components/EmpTask'
 import AddTask from './Components/AddTask'
 import AssignTask from './Components/AssignTask'
+import KycVerification from './Components/KycVerification'
+import KycUpdate from './Components/KycUpdate'
+import PaySalary from './Components/PaySalary'
 
 function App() {
 
@@ -61,7 +64,7 @@ function App() {
         {/* Employee Section */}
         <Route path='/employee_login' element={<EmployeeLogin />}></Route>
 
-        {/* <Route path='/employee_detail/:id' element={<EmployeeDetail />}> */}
+        {/* <Route path='/employee_detail/:employeeId' element={<EmployeeDetail />}> */}
         <Route path='/employee_detail' element={<EmployeeDetail />}>
         <Route path='' element={<EmpDashboard />}></Route>
         <Route path='/employee_detail/empAttendance' element={<EmpAttendance />}></Route>
@@ -111,6 +114,9 @@ function App() {
           <Route path='/dashboard/calculate-salary' element={<CalculateSalary />}></Route>
           <Route path='/dashboard/add-payment' element={<AddPayment />}></Route>
           <Route path='/dashboard/pay-employees' element={<PayEmployees />}></Route>
+          <Route path='/dashboard/kycVerification' element={<KycVerification />}></Route>
+          <Route path='/dashboard/kycUpdate/:employeeId' element={<KycUpdate />}></Route>
+          <Route path='/dashboard/paySalary/:employeeId' element={<PaySalary />}></Route>
           <Route path='/dashboard/live-location' element={<LiveLocation />}></Route>
           <Route path='/dashboard/document' element={<Document />}></Route>
           <Route path='/dashboard/addtask' element={<AddTask />}></Route>

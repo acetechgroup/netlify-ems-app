@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const PayEmployees = () => {
   return (
@@ -14,7 +15,12 @@ const PayEmployees = () => {
         <p>Please complete your business KYC now to activate your EMS wallet</p>
       </div>
       <div>
-        <button className='btn btn-info'>Do KYC Verification</button>
+        <Link 
+        to={'/dashboard/kycVerification'}
+        className='btn btn-info'
+        >
+          Do KYC Verification
+        </Link>
       </div>
       </div>
     </div>

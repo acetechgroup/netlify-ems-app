@@ -5,7 +5,7 @@ import { Link, NavLink, Outlet, useNavigate, useParams } from 'react-router-dom'
 
 const EmployeeDetail = () => {
     const [employee, setEmployee] = useState([])
-    const { id } = useParams()
+    // const { employeeId } = useParams()
     const navigate = useNavigate()
 
     // useEffect(() => {
@@ -18,27 +18,34 @@ const EmployeeDetail = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+        const employeeId = localStorage.getItem('employeeId');
+        // console.log(employeeId);
         axios
-            .get("https://emsproject-production.up.railway.app/api/employee/" + id, {
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/" + employeeId, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
             })
             .then(result => {
-                setEmployee(result.data[0])
+                // setEmployee(result.data[0])
+                setEmployee(result.data)
             })
             .catch((err) => console.log(err, "Saroj we are getting error"));
     }, []);
 
+    
+    // console.log(employee.name);
+    
+
     const handleLogout = () => {
-        axios.get('http://localhost:3000/employee/logout')
-            .then(result => {
-                if (result.data.Status) {
-                    // localStorage.removeItem("valid")
-                    navigate('/')
-                    console.log("logout");
-                }
-            }).catch(err => console.log(err))
+        // axios.get('http://localhost:3000/employee/logout')
+        //     .then(result => {
+        //         if (result.data.Status) {
+        //             // localStorage.removeItem("valid")
+        //             navigate('/')
+        //             console.log("logout");
+        //         }
+        //     }).catch(err => console.log(err))
     }
     return (
         <>
@@ -89,7 +96,7 @@ const EmployeeDetail = () => {
               ))} */}
 
                             <div className="btn-head-1">
-                                Saroj Kumar Sharma
+                                {employee.name}
                             </div>
 
                         </div>

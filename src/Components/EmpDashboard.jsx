@@ -1,31 +1,113 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AreaChart, Area, LineChart, Line, BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 
 const EmpDashboard = () => {
+    // const { employeeId } = useParams()
+    const [presentCount, setPresentCount] = useState([]);
+    const [absentCount, setAbsentCount] = useState([]);
+    const [halfDayCount, setHalfDayCount] = useState([]);
+    const [lateCount, setLateCount]= useState([]);
+    const [attendanceTotal, setAttendanceTotal] = useState([]);
 
+    useEffect(() => {
+        PresentCount();
+        AbsentCount();
+        HalfDayCount();
+        LateCount();
+        AttendanceCount();
+      }, []);
+
+    // useEffect(() => {
+        const PresentCount = () => {
+            const token = localStorage.getItem('token');
+            axios
+                .get("https://mohitbyproject-production.up.railway.app/api/Hello/countP", {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
+                .then(result => {
+                    if (result.data >= 0) {
+                        setPresentCount(result.data)
+                    }
+                })
+        }
+
+        const AbsentCount = () => {
+            const token = localStorage.getItem('token');
+            axios
+                .get("https://mohitbyproject-production.up.railway.app/api/Hello/countA", {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
+                .then(result => {
+                    if (result.data >= 0) {
+                        setAbsentCount(result.data)
+                    }
+                })
+        }
+
+        const HalfDayCount = () => {
+            const token = localStorage.getItem('token');
+            axios
+                .get("https://mohitbyproject-production.up.railway.app/api/Hello/countH", {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
+                .then(result => {
+                    if (result.data >= 0) {
+                        setHalfDayCount(result.data)
+                    }
+                })
+        }
+
+        const LateCount = () => {const token = localStorage.getItem('token');
+            axios
+            .get("https://mohitbyproject-production.up.railway.app/api/Hello/countL", {
+              headers: {
+                "Authorization": `Bearer ${token}`
+              }
+            })
+              .then(result => {
+                if (result.data>=0) {
+                  setLateCount(result.data)
+                }
+              })
+          }
+
+    // }, []);
+    // console.log("Present Count", presentCount);
+    // console.log("Absent Count",absentCount);
+    // console.log("Half Day Count",halfDayCount);
+
+    // const presentC = presentCount;
     const data = [
         {
             name: 'Jan',
-            present: 20,
-            half_Day: 5,
-            absent: 1,
+            present: presentCount,
+            half_Day: halfDayCount,
+            absent: absentCount,
         },
         {
             name: 'Feb',
-            present: 15,
-            half_Day: 4,
-            absent: 7,
+            present: presentCount,
+            half_Day: halfDayCount,
+            absent: absentCount,
         },
         {
             name: 'March',
-            present: 18,
-            half_Day: 6,
-            absent: 2,
+            present: presentCount,
+            half_Day: halfDayCount,
+            absent: absentCount,
         }
     ];
+
+    // console.log(employeeId);
 
     const [m, setM] = useState(0)
     const [f, setF] = useState(0)
@@ -33,44 +115,46 @@ const EmpDashboard = () => {
     const [employeeTotal, setemployeeTotal] = useState(0)
     const [employee, setEmployee] = useState([]);
     // const[data, setData]= useState([])
-    
-    useEffect(() => {const token = localStorage.getItem('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1wbDFAZ21haWwuY29tIiwiaWF0IjoxNzIyMzM2MTQ5LCJleHAiOjE3MjIzMzc5NDl9.Wk5XMV_V61JXrrtldWp02-0XKhPiCHAw4EKtmdQmWhM');
-        axios
-        .get("https://emsproject-production.up.railway.app/api/employee/", {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
-        })
-          .then((result) => {
-            if (result.data) {
-              setEmployee(result.data);
-              // setRecords(result.data.Result);
-            } else {
-              alert(result.data.Error);
-            }
-          })
-          .catch((err) => console.log(err));
-      }, []);
 
-    const employeeCount = () => {
-        const token = localStorage.getItem('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1wbDFAZ21haWwuY29tIiwiaWF0IjoxNzIyMzM2MTQ5LCJleHAiOjE3MjIzMzc5NDl9.Wk5XMV_V61JXrrtldWp02-0XKhPiCHAw4EKtmdQmWhM');
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const employeeId = localStorage.getItem('employeeId');
         axios
-            .get("https://emsproject-production.up.railway.app/api/employee/count", {
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/" + employeeId, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then((result) => {
+                if (result.data) {
+                    setEmployee(result.data);
+                    // setRecords(result.data.Result);
+                } else {
+                    alert(result.data.Error);
+                }
+            })
+            .catch((err) => console.log(err));
+    }, []);
+
+    const AttendanceCount = () => {
+        const token = localStorage.getItem('token');
+        axios
+            .get("https://mohitbyproject-production.up.railway.app/api/Hello/count", {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
             })
             .then(result => {
-                if (result.data) {
-                    setemployeeTotal(result.data)
+                if (result.data >= 0) {
+                    setAttendanceTotal(result.data)
                 }
             })
     }
 
     const GenderM = () => {
-        const token = localStorage.getItem('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1wbDFAZ21haWwuY29tIiwiaWF0IjoxNzIyMzM2MTQ5LCJleHAiOjE3MjIzMzc5NDl9.Wk5XMV_V61JXrrtldWp02-0XKhPiCHAw4EKtmdQmWhM');
+        const token = localStorage.getItem('token');
         axios
-            .get("https://emsproject-production.up.railway.app/api/employee/countm", {
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/countm", {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -84,9 +168,9 @@ const EmpDashboard = () => {
             })
     }
     const GenderF = () => {
-        const token = localStorage.getItem('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1wbDFAZ21haWwuY29tIiwiaWF0IjoxNzIyMzM2MTQ5LCJleHAiOjE3MjIzMzc5NDl9.Wk5XMV_V61JXrrtldWp02-0XKhPiCHAw4EKtmdQmWhM');
+        const token = localStorage.getItem('token');
         axios
-            .get("https://emsproject-production.up.railway.app/api/employee/countf", {
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/countf", {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -100,9 +184,9 @@ const EmpDashboard = () => {
             })
     }
     const GenderT = () => {
-        const token = localStorage.getItem('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1AZ21haWwuY29tIiwiaWF0IjoxNzIyMzM2NTU4LCJleHAiOjE3MjIzMzgzNTh9._r_6DAmF2ZjeEiUIm9c1YBpDwp6QU5O4g-FkQyVCH6s');
+        const token = localStorage.getItem('token');
         axios
-            .get("https://emsproject-production.up.railway.app/api/employee/countt", {
+            .get("https://mohitbyproject-production.up.railway.app/api/employee/countt", {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -118,34 +202,6 @@ const EmpDashboard = () => {
 
 
 
-    // useEffect(() => {
-    //     //     axios.get('http://localhost:8080/api/employees')
-    //     //         .then(response => setData(response.data))
-    //     //         .catch(error => console.error(error));
-    //     // }, []);
-    //     const token = localStorage.getItem('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1AZ21haWwuY29tIiwiaWF0IjoxNzIyMzM2NTU4LCJleHAiOjE3MjIzMzgzNTh9._r_6DAmF2ZjeEiUIm9c1YBpDwp6QU5O4g-FkQyVCH6s');
-    //     axios
-    //     .get("https://emsproject-production.up.railway.app/api/employee/", {
-    //       headers: {
-    //         "Authorization": `Bearer ${token}`
-    //       }
-    //     })
-    //       .then((result) => {
-    //         if (result.data) {
-    //           setData(result.data);
-    //         } else {
-    //           alert(result.data.Error);
-    //         }
-    //       })
-    //       .catch((err) => console.log(err));
-    //   }, []);
-    
-    
-    //     const formattedData = data.map(emp => ({
-    //         name: emp.name,
-    //         salary: emp.salary,
-    //     }));
-    
 
     return (
         <>
@@ -248,24 +304,24 @@ const EmpDashboard = () => {
                                         </div>
                                     </div>
                                     <div className='dash-font-1'>
-                                        {employeeTotal}
+                                        {attendanceTotal}
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                                     <div>Present :</div>
-                                    <div>{m}</div>
+                                    <div>{presentCount}</div>
                                 </div>
                                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                                     <div>Absent :</div>
-                                    <div>{f}</div>
+                                    <div>{absentCount}</div>
                                 </div>
                                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                                     <div>Late :</div>
-                                    <div>{t}</div>
+                                    <div>{lateCount}</div>
                                 </div>
                                 <div className='d-flex justify-content-between m-2 border-bottom dash-font'>
                                     <div>Half Day :</div>
-                                    <div>{t}</div>
+                                    <div>{halfDayCount}</div>
                                 </div>
                             </div>
                         </Link>
@@ -371,7 +427,7 @@ const EmpDashboard = () => {
                                             </tr>
                                         </thead>
                                         <tbody >
-                                            {employee.map((e) => (
+                                            {/* {employee.map((e) => (
                                                 <tr>
                                                     <td>
                                                         {e.id}
@@ -381,7 +437,7 @@ const EmpDashboard = () => {
                                                         {e.reason}
                                                     </td>
                                                 </tr>
-                                            ))}
+                                            ))} */}
 
                                         </tbody>
                                     </table>

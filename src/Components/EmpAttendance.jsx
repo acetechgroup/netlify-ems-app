@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function EmpAttendance() {
-  const [employeeId, setEmployeeId] = useState('4'); // Assuming '4' is the hardcoded employee ID
+  // const [employeeId, setEmployeeId] = useState('4'); // Assuming '4' is the hardcoded employee ID
   const [attendanceId, setAttendanceId] = useState('');
   const [isPunchedIn, setIsPunchedIn] = useState(false);
   const [punchInTime, setPunchInTime] = useState(null);
@@ -34,7 +34,7 @@ function EmpAttendance() {
 
   const handlePunch = () => {
     if (isPunchedIn) {
-      axios.post(`http://localhost:8080/attendance/punchOut/${attendanceId}`)
+      axios.post(`https://mohitbyproject-production.up.railway.app/api/attendance/punchOut/${attendanceId}`)
         .then(response => {
           setIsPunchedIn(false);
           setAttendanceId(''); // Reset attendanceId after punch out
@@ -45,7 +45,8 @@ function EmpAttendance() {
           alert('Punch out failed: ' + error.response.data);
         });
     } else {
-      axios.post('http://localhost:8080/attendance/punchIn', { id: employeeId })
+      const employeeId = localStorage.getItem('employeeId');
+      axios.post('https://mohitbyproject-production.up.railway.app/api/attendance/punchIn', { id: employeeId })
         .then(response => {
           setAttendanceId(response.data);
           setIsPunchedIn(true);
@@ -56,6 +57,8 @@ function EmpAttendance() {
         .catch(error => {
           alert('Punch in failed: ' + error.response.data);
         });
+        // console.log(employeeId);
+        
     }
   };
 
