@@ -50,6 +50,7 @@ import AssignTask from './Components/AssignTask'
 import KycVerification from './Components/KycVerification'
 import KycUpdate from './Components/KycUpdate'
 import PaySalary from './Components/PaySalary'
+import EditCompanyDetails from './Components/EditCompanyDetails'
 
 function App() {
 
@@ -122,6 +123,8 @@ function App() {
           <Route path='/dashboard/addtask' element={<AddTask />}></Route>
           <Route path='/dashboard/assigntask/:employeeId' element={<AssignTask />}></Route>
           <Route path='/dashboard/settings' element={<Settings />}></Route>
+          <Route path='/dashboard/profile' element={<Profile />}></Route>
+          <Route path='/dashboard/editCompanyDetails' element={<EditCompanyDetails />}></Route>
           <Route path='/dashboard/add_employee' element={<AddEmployee />}></Route>
           <Route path='/dashboard/edit_employee/:employeeId' element={<EditEmployee />}
           ></Route>

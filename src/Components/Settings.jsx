@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Settings = () => {
   return (
@@ -11,15 +12,25 @@ const Settings = () => {
           Company Details
         </div>
         <div className='setting-list'>
+        <Link
+            to="/dashboard/editCompanyDetails"
+            className="nav-link"
+            >
           <div className='setting-list-1'>
+            
             <div className='d-flex mt-2'>
               <div className='logo-bg me-3 mt-2'>Add Logo</div>
-              <div><span className='text-seting'>Company Name</span><br /><span className='text-seting-1'>Edit Company Details</span></div>
+              <div>
+                <span className='text-seting'>Company Name</span><br />
+                <span className='text-seting-1'>Edit Company Details</span>
+              </div>
             </div>
+            
             <div className='me-4 mt-3'>
               <i className="fs-5 bi bi-arrow-right"></i>
             </div>
           </div>
+          </Link>
         </div>
         <div className='setting-list'>
           <div className='setting-list-1'>

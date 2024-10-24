@@ -50,6 +50,7 @@ const EmpViewAttendance = () => {
   const [events, setEvents] = useState([]);
   const [holidayName, setHolidayName] = useState('');
   const [holidayDate, setHolidayDate] = useState('');
+  const employeeId = localStorage.getItem('employeeId');
   const data = [
     {
         title: "Saroj",
@@ -64,41 +65,41 @@ const EmpViewAttendance = () => {
   ]
 
 
-//   useEffect(() => {
-//     const fetchEvents = async () => {
-//       try {
-//         const response = await axios.get('http://localhost:8080/holidays');
-//         const events = response.data.map(record => ({
-//           title: record.name,
-//           start: format(new Date(record.date), 'yyyy-MM-dd'), // Ensure date format
-//           allDay: true,
-//         }));
-//         setEvents(events);
-//       } catch (error) {
-//         console.error('Error fetching holidays', error);
-//       }
-//     };
-//     fetchEvents();
-//   }, []);
+  // useEffect(() => {
+  //   const fetchEvents = async () => {
+  //     try {
+  //       const response = await axios.get("https://mohitbyproject-production.up.railway.app/api/employee/" + employeeId,);
+  //       const events = response.data.map(record => ({
+  //         title: record.name,
+  //         start: format(new Date(record.date), 'yyyy-MM-dd'), // Ensure date format
+  //         allDay: true,
+  //       }));
+  //       setEvents(events);
+  //     } catch (error) {
+  //       console.error('Error fetching holidays', error);
+  //     }
+  //   };
+  //   fetchEvents();
+  // }, []);
 
-//   const addHoliday = async () => {
-//     try {
-//       const formattedDate = format(new Date(holidayDate), 'yyyy-MM-dd'); // Ensure date format
-//       const response = await axios.post('http://localhost:8080/holidays', {
-//         name: holidayName,
-//         date: formattedDate,
-//       });
-//       setEvents([...events, {
-//         title: response.data.name,
-//         start: response.data.date,
-//         allDay: true,
-//       }]);
-//       setHolidayName('');
-//       setHolidayDate('');
-//     } catch (error) {
-//       console.error('Error adding holiday', error);
-//     }
-//   };
+  // const addHoliday = async () => {
+  //   try {
+  //     const formattedDate = format(new Date(holidayDate), 'yyyy-MM-dd'); // Ensure date format
+  //     const response = await axios.post('http://localhost:8080/holidays', {
+  //       name: holidayName,
+  //       date: formattedDate,
+  //     });
+  //     setEvents([...events, {
+  //       title: response.data.name,
+  //       start: response.data.date,
+  //       allDay: true,
+  //     }]);
+  //     setHolidayName('');
+  //     setHolidayDate('');
+  //   } catch (error) {
+  //     console.error('Error adding holiday', error);
+  //   }
+  // };
 
   return (
     <>

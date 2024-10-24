@@ -27,6 +27,30 @@ function MiniDropdown({ onClose }) {
     }
   }
 
+  const handleLogout = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("No token found, cannot logout.");
+      navigate('/');
+      return;
+    }
+ 
+    axios.post('https://emsproject-production.up.railway.app/auth/logout', {}, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then(result => {
+      if (result.data) {
+        localStorage.removeItem("token");
+        navigate('/');
+      } else {
+        console.error("Logout failed:", result.data);
+      }
+    })
+    .catch(err => console.error("Error in logout request:", err));
+  };
+
   return (
     <div ref={modelRef} onClick={closeModel} className='dropDownProfile d-flex flex-column'>
       <ul className='d-flex flex-column gap-1 list-unstyled text-decoration-none'>
@@ -43,12 +67,12 @@ function MiniDropdown({ onClose }) {
         <li role='button'>
           <i className="bi bi-person-circle me-3"></i>
           <Link
-            to='#'
+            to='/dashboard/profile'
             className=''>
             Profile
           </Link>
         </li>
-        <li role='button'>
+        <li role='button' onClick={handleLogout}>
           <i className="bi bi-box-arrow-in-right me-3"></i>
           <Link
             to='#'

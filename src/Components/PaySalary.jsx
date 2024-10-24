@@ -86,7 +86,7 @@ const PaySalary = () => {
               className="form-control rounded-0"
               id="inputCtc"
               placeholder="Enter Aadhar card No."
-              value={(employee.salary)*12}
+              value={((employee.salary)*12).toFixed(2)}
               onChange={(e) =>
                 setEmployee({ ...employee, salary: e.target.value })
               }
@@ -102,7 +102,7 @@ const PaySalary = () => {
               className="form-control rounded-0"
               id="inputMonthlySal"
               placeholder="Enter Pan Card No."
-              value={employee.salary}
+              value={(employee.salary).toFixed(2)}
               autoComplete="off"
               onChange={(e) =>
                 setEmployee({ ...employee, salary: e.target.value })
@@ -110,15 +110,15 @@ const PaySalary = () => {
             />
           </div>
           <div className="col-12">
-            <label htmlFor="inputMonthlySal" className="form-label">
+            <label htmlFor="inputWeaklySalary" className="form-label">
               Weakly Salary <i className="bi bi-currency-rupee" />
             </label>
             <input
               type="text"
               className="form-control rounded-0"
-              id="inputMonthlySal"
+              id="inputWeaklySalary"
               placeholder="Enter Pan Card No."
-              value={((employee.salary)/30)*7}
+              value={(((employee.salary)/28)*7).toFixed(2)}
               autoComplete="off"
               onChange={(e) =>
                 setEmployee({ ...employee, salary: e.target.value })
@@ -134,7 +134,7 @@ const PaySalary = () => {
               className="form-control rounded-0"
               id="inputMonthlySal"
               placeholder="Enter Pan Card No."
-              value={(employee.salary)/30}
+              value={((employee.salary)/30).toFixed(2)}
               autoComplete="off"
               onChange={(e) =>
                 setEmployee({ ...employee, salary: e.target.value })
@@ -153,7 +153,7 @@ const PaySalary = () => {
               placeholder="Enter Professional Amount"
             //   value={employee.mobile}
               onChange={(e) =>
-                setEmployee({ ...employee, mobile: e.target.value })
+                setEmployee({ ...employee, pf: e.target.value })
               }
             />
           </div>
