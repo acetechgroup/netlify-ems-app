@@ -27,7 +27,7 @@ const AddEmployee = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("https://mohitbyproject-production.up.railway.app/api/category/", {
+      .get("https://emspro-production.up.railway.app/api/category/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,7 +52,7 @@ const AddEmployee = () => {
     const token = localStorage.getItem("token");
 
     axios
-      .post("https://mohitbyproject-production.up.railway.app/api/employee/", formData, {
+      .post("https://emspro-production.up.railway.app/api/employee/", formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

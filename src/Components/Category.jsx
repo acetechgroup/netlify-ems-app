@@ -9,7 +9,7 @@ const Category = () => {
     useEffect(()=> {
         const token = localStorage.getItem('token');
  
-        axios.get('https://mohitbyproject-production.up.railway.app/api/category/',{
+        axios.get('https://emspro-production.up.railway.app/api/category/',{
             headers: {
                 "Authorization": `Bearer ${token}`
               }

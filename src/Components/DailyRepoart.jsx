@@ -16,7 +16,7 @@ const DailyRepoart = () => {
 
     useEffect(() => {
         axios
-            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
+            .get("https://emspro-production.up.railway.app/api/employee/")
             .then((result) => {
                 if (result.data) {
                     setEmployee(result.data);
@@ -108,7 +108,7 @@ const DailyRepoart = () => {
                             <div className='d-flex'>
                               <div>
                                 <img
-                                  src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
+                                  src={`https://emspro-production.up.railway.app/api/employee/image/${e.zname}`}
                                   className="home_leave_image"
                                 />
                               </div>

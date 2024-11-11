@@ -18,7 +18,7 @@ const ListReimbuesement = () => {
 
     useEffect(() => {
         axios
-            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
+            .get("https://emspro-production.up.railway.app/api/employee/")
             .then((result) => {
                 if (result.data) {
                     setEmployee(result.data);
@@ -33,7 +33,7 @@ const ListReimbuesement = () => {
         setRecords(employee.filter(f => f.name.toLowerCase().includes(event.target.value)))
     }
     const handleDelete = (employeeId) => {
-        axios.delete('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
+        axios.delete('https://emspro-production.up.railway.app/api/employee/' + employeeId)
             .then(result => {
                 if (result.data) {
                     window.location.reload()

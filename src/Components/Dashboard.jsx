@@ -14,7 +14,7 @@ const Dashboard = () => {
   }, [])
 
   const AdminRecords = () => {
-    axios.get('https://mohitbyproject-production.up.railway.app/api/user/')
+    axios.get('https://emspro-production.up.railway.app/api/user/')
       .then(result => {
         if (result.data) {
           setAdmins(result.data)
@@ -34,7 +34,7 @@ const Dashboard = () => {
       return;
     }
  
-    axios.post('https://emsproject-production.up.railway.app/auth/logout', {}, {
+    axios.post('https://emspro-production.up.railway.app/auth/logout', {}, {
       headers: {
         "Authorization": `Bearer ${token}`
       }

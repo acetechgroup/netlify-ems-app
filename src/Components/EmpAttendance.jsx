@@ -150,7 +150,7 @@ function EmpAttendance() {
 
   const handlePunch = () => {
     if (isPunchedIn) {
-      axios.post(`https://mohitbyproject-production.up.railway.app/api/attendance/punchOut/${attendanceId}`)
+      axios.post(`https://emspro-production.up.railway.app/api/attendance/punchOut/${attendanceId}`)
         .then(response => {
           console.log(response.data)
           setIsPunchedIn(false);
@@ -162,7 +162,7 @@ function EmpAttendance() {
           alert('Punch out failed: ' + error.response.data);
         });
     } else {
-      axios.post('https://mohitbyproject-production.up.railway.app/api/attendance/punchIn', { employeeId })
+      axios.post('https://emspro-production.up.railway.app/api/attendance/punchIn', { employeeId })
         .then(response => {
           setAttendanceId(response.data);
           setIsPunchedIn(true);

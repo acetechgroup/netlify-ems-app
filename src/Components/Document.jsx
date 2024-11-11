@@ -8,7 +8,7 @@ const Document = () => {
 
   useEffect(() => {
     axios
-      .get("https://mohitbyproject-production.up.railway.app/api/employee/")
+      .get("https://emspro-production.up.railway.app/api/employee/")
       .then((result) => {
         if (result.data) {
           setEmployee(result.data);
@@ -20,7 +20,7 @@ const Document = () => {
       .catch((err) => console.log(err));
   }, []);
   const handleDelete = (employeeId) => {
-    axios.delete('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
+    axios.delete('https://emspro-production.up.railway.app/api/employee/' + employeeId)
       .then(result => {
         if (result.data) {
           window.location.reload()
@@ -76,7 +76,7 @@ const Document = () => {
                                                         className="employee_image"
                                                     /> */}
                                                     <img
-                                                        src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
+                                                        src={`https://emspro-production.up.railway.app/api/employee/image/${e.zname}`}
                                                         alt={`${e.zname}'s profile`}
                                                         className="employee_image"
                                                     />

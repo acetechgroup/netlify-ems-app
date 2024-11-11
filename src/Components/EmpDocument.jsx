@@ -25,7 +25,7 @@ const EmpDocument = () => {
         const token = localStorage.getItem('token');
      
      
-        axios.post('https://emsproject-production.up.railway.app/api/document/', formData
+        axios.post('https://emspro-production.up.railway.app/api/document/', formData
         ,{  headers: {
           "content-type": "application/json",
           "Authorization": `Bearer ${token}` // Include the token in the Authorization header

@@ -18,7 +18,7 @@ const TaskList = () => {
 
     useEffect(() => {
         axios
-            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
+            .get("https://emspro-production.up.railway.app/api/employee/")
             .then((result) => {
                 if (result.data) {
                     setEmployee(result.data);
@@ -30,7 +30,7 @@ const TaskList = () => {
             })
             .catch((err) => console.log(err));
         axios
-            .get("https://mohitbyproject-production.up.railway.app/api/tasks")
+            .get("https://emspro-production.up.railway.app/api/tasks")
             .then((result) => {
                 if (result.data) {
                     setTask(result.data);

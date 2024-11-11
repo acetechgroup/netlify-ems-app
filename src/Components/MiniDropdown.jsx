@@ -35,7 +35,7 @@ function MiniDropdown({ onClose }) {
       return;
     }
  
-    axios.post('https://emsproject-production.up.railway.app/auth/logout', {}, {
+    axios.post('https://emspro-production.up.railway.app/auth/logout', {}, {
       headers: {
         "Authorization": `Bearer ${token}`
       }

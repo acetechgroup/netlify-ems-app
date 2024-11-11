@@ -10,7 +10,7 @@ const CurrentEmployee = () => {
  
     useEffect(() => {const token = localStorage.getItem('token');
         axios
-        .get("https://mohitbyproject-production.up.railway.app/api/employee/", {
+        .get("https://emspro-production.up.railway.app/api/employee/", {
           headers: {
             "Authorization": `Bearer ${token}`
           }
@@ -29,7 +29,7 @@ const CurrentEmployee = () => {
         setRecords(employee.filter(f => f.name.toLowerCase().includes(event.target.value)))
     }
     const handleDelete = (employeeId) => {
-        axios.delete('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
+        axios.delete('https://emspro-production.up.railway.app/api/employee/' + employeeId)
           .then(result => {
             if (result.data) {
               window.location.reload()

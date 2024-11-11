@@ -317,7 +317,7 @@ const Attendence = () => {
 
   const AdminRecords = () => {
     const token = localStorage.getItem('token');
-    axios.get("https://emsproject-production.up.railway.app/auth/getUsers/", {
+    axios.get("https://emspro-production.up.railway.app/auth/getUsers/", {
       headers: { "Authorization": `Bearer ${token}` }
     })
     .then(result => {
@@ -332,7 +332,7 @@ const Attendence = () => {
 
   const fetchCategories = () => {
     const token = localStorage.getItem('token');
-    axios.get("https://mohitbyproject-production.up.railway.app/api/category/", {
+    axios.get("https://emspro-production.up.railway.app/api/category/", {
       headers: { "Authorization": `Bearer ${token}` }
     })
     .then(result => {
@@ -347,7 +347,7 @@ const Attendence = () => {
 
   const fetchEmployees = () => {
     const token = localStorage.getItem('token');
-    axios.get("https://mohitbyproject-production.up.railway.app/api/employee/", {
+    axios.get("https://emspro-production.up.railway.app/api/employee/", {
       headers: { "Authorization": `Bearer ${token}` }
     })
     .then(result => {
@@ -381,7 +381,7 @@ const Attendence = () => {
 
     if (isPunchingIn) {
       punchButton.innerText = 'Punch Out';
-      axios.post('https://mohitbyproject-production.up.railway.app/api/Hello/punchIn', {
+      axios.post('https://emspro-production.up.railway.app/api/Hello/punchIn', {
         employeeName: name,
         employeeId: employeeId,
         // punchIn: new Date().toLocaleString(),
@@ -401,7 +401,7 @@ const Attendence = () => {
     } else {
       const attendanceId = punchRecords[employeeId];
       punchButton.innerText = 'Punch In';
-      axios.put(`https://mohitbyproject-production.up.railway.app/api/Hello/punchOut/${attendanceId}`, {
+      axios.put(`https://emspro-production.up.railway.app/api/Hello/punchOut/${attendanceId}`, {
         // punchOut: new Date().toLocaleString()
       })
       .then(result => {
@@ -424,7 +424,7 @@ const Attendence = () => {
 
   const PresentCount = () => {const token = localStorage.getItem('token');
     axios
-    .get("https://mohitbyproject-production.up.railway.app/api/Hello/countP", {
+    .get("https://emspro-production.up.railway.app/api/Hello/countP", {
       headers: {
         "Authorization": `Bearer ${token}`
       }
@@ -438,7 +438,7 @@ const Attendence = () => {
 
   const AbsentCount = () => {const token = localStorage.getItem('token');
     axios
-    .get("https://mohitbyproject-production.up.railway.app/api/Hello/countA", {
+    .get("https://emspro-production.up.railway.app/api/Hello/countA", {
       headers: {
         "Authorization": `Bearer ${token}`
       }
@@ -452,7 +452,7 @@ const Attendence = () => {
 
   const LateCount = () => {const token = localStorage.getItem('token');
     axios
-    .get("https://mohitbyproject-production.up.railway.app/api/Hello/countL", {
+    .get("https://emspro-production.up.railway.app/api/Hello/countL", {
       headers: {
         "Authorization": `Bearer ${token}`
       }
@@ -466,7 +466,7 @@ const Attendence = () => {
 
   const HalfDayCount = () => {const token = localStorage.getItem('token');
     axios
-    .get("https://mohitbyproject-production.up.railway.app/api/Hello/countH", {
+    .get("https://emspro-production.up.railway.app/api/Hello/countH", {
       headers: {
         "Authorization": `Bearer ${token}`
       }
@@ -480,7 +480,7 @@ const Attendence = () => {
 
   const PaidLeaveCount = () => {const token = localStorage.getItem('token');
     axios
-    .get("https://mohitbyproject-production.up.railway.app/api/Hello/countPl", {
+    .get("https://emspro-production.up.railway.app/api/Hello/countPl", {
       headers: {
         "Authorization": `Bearer ${token}`
       }
@@ -596,7 +596,7 @@ const Attendence = () => {
                       <td>{e.employeeId}</td>
                       <td>
                         <img
-                          src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
+                          src={`https://emspro-production.up.railway.app/api/employee/image/${e.zname}`}
                           className="employee_image"
                           alt='Emp Img'
                         />

@@ -14,7 +14,7 @@ const AssignTask = () => {
 
   useEffect(() => {
     
-    axios.get('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
+    axios.get('https://emspro-production.up.railway.app/api/employee/' + employeeId)
       .then(result => {
         setEmployee({
           ...employee,
@@ -36,7 +36,7 @@ const handleSubmit = async (e) => {
     };
 
     try {
-      const response = await fetch('https://mohitbyproject-production.up.railway.app/api/tasks', {
+      const response = await fetch('https://emspro-production.up.railway.app/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

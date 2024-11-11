@@ -121,7 +121,7 @@ const Employee = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("https://mohitbyproject-production.up.railway.app/api/employee/", {
+      .get("https://emspro-production.up.railway.app/api/employee/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -139,7 +139,7 @@ const Employee = () => {
   const handleDelete = (employeeId) => {
     const token = localStorage.getItem("token");
     axios
-      .delete("https://mohitbyproject-production.up.railway.app/api/employee/" + employeeId, {
+      .delete("https://emspro-production.up.railway.app/api/employee/" + employeeId, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -192,7 +192,7 @@ const Employee = () => {
                       <td>{e.name}</td>
                       <td>
                         <img
-                          src={`https://mohitbyproject-production.up.railway.app/api/employee/image/${e.zname}`}
+                          src={`https://emspro-production.up.railway.app/api/employee/image/${e.zname}`}
                           alt={`${e.zname}'s profile`}
                           className="employee_image"
                         />

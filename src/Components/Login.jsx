@@ -13,7 +13,7 @@ const Login = () => {
  
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('https://emsproject-production.up.railway.app/auth/login', values)
+        axios.post('https://emspro-production.up.railway.app/auth/login', values)
             .then(result => {
                 if (result.data) {
                     // Store JWT token in local storage

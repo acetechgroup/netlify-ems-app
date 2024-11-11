@@ -68,7 +68,7 @@ const EmpViewAttendance = () => {
   // useEffect(() => {
   //   const fetchEvents = async () => {
   //     try {
-  //       const response = await axios.get("https://mohitbyproject-production.up.railway.app/api/employee/" + employeeId,);
+  //       const response = await axios.get("https://emspro-production.up.railway.app/api/employee/" + employeeId,);
   //       const events = response.data.map(record => ({
   //         title: record.name,
   //         start: format(new Date(record.date), 'yyyy-MM-dd'), // Ensure date format

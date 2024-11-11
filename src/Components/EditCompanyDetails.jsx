@@ -29,7 +29,7 @@ const EditCompanyDetails = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('https://mohitbyproject-production.up.railway.app/api/category/')
+        axios.get('https://emspro-production.up.railway.app/api/category/')
             .then(result => {
                 if (result.data) {
                     setCategory(result.data);
@@ -38,7 +38,7 @@ const EditCompanyDetails = () => {
                 }
             }).catch(err => console.log(err))
 
-        axios.get('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
+        axios.get('https://emspro-production.up.railway.app/api/employee/' + employeeId)
             .then(result => {
                 setEmployee({
                     ...employee,
@@ -68,7 +68,7 @@ const EditCompanyDetails = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.put('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId, employee)
+        axios.put('https://emspro-production.up.railway.app/api/employee/' + employeeId, employee)
             .then(result => {
                 if (result.data) {
                     navigate('/dashboard/employee')

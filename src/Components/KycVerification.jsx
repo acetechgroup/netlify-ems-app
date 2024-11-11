@@ -8,7 +8,7 @@ const KycVerification = () => {
 
   useEffect(() => {
     axios
-      .get("https://mohitbyproject-production.up.railway.app/api/employee/")
+      .get("https://emspro-production.up.railway.app/api/employee/")
       .then((result) => {
         if (result.data) {
           setEmployee(result.data);
@@ -20,7 +20,7 @@ const KycVerification = () => {
       .catch((err) => console.log(err));
   }, []);
 //   const handleDelete = (employeeId) => {
-//     axios.delete('https://mohitbyproject-production.up.railway.app/api/employee/' + employeeId)
+//     axios.delete('https://emspro-production.up.railway.app/api/employee/' + employeeId)
 //       .then(result => {
 //         if (result.data) {
 //           window.location.reload()

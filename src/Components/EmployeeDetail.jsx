@@ -21,7 +21,7 @@ const EmployeeDetail = () => {
         const employeeId = localStorage.getItem('employeeId');
         // console.log(employeeId);
         axios
-            .get("https://mohitbyproject-production.up.railway.app/api/employee/" + employeeId, {
+            .get("https://emspro-production.up.railway.app/api/employee/" + employeeId, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }

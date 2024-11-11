@@ -24,7 +24,7 @@ const CalculateSalary = () => {
     }, [])
 
     const PaymentCount = () => {
-        axios.get('https://mohitbyproject-production.up.railway.app/api/employee/total')
+        axios.get('https://emspro-production.up.railway.app/api/employee/total')
             .then(result => {
                 if (result.data) {
                     setPayment(result.data)
@@ -36,7 +36,7 @@ const CalculateSalary = () => {
 
     useEffect(() => {
         axios
-            .get("https://mohitbyproject-production.up.railway.app/api/category/")
+            .get("https://emspro-production.up.railway.app/api/category/")
             .then((result) => {
                 if (result.data) {
                     setCategory(result.data);
@@ -49,7 +49,7 @@ const CalculateSalary = () => {
 
     useEffect(() => {
         axios
-            .get("https://mohitbyproject-production.up.railway.app/api/employee/")
+            .get("https://emspro-production.up.railway.app/api/employee/")
             .then((result) => {
                 if (result.data) {
                     setEmployee(result.data);
