@@ -207,6 +207,13 @@ ul li :hover {
     overflow: scroll;
     padding-bottom: 70px;
 }
+.add_dep_bg {
+    background-color: #edf1f3;
+    width: 81vw;
+    height: 100%;
+    overflow: scroll;
+    padding-bottom: 70px;
+}
 
 .home_bg {
     /* width: 81vw; */

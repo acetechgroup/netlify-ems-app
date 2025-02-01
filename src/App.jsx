@@ -51,6 +51,13 @@ import KycVerification from './Components/KycVerification'
 import KycUpdate from './Components/KycUpdate'
 import PaySalary from './Components/PaySalary'
 import EditCompanyDetails from './Components/EditCompanyDetails'
+import AddBranches from './Components/AddBranches'
+import AddNewBranch from './Components/AddNewBranch'
+import EditBranch from './Components/EditBranch'
+import AddDepartments from './Components/AddDepartments'
+import AddNewDepartment from './Components/AddNewDepartment'
+import EditDepartment from './Components/EditDepartment'
+import QrCodeAttendance from './Components/QrCodeAttendance'
 
 function App() {
 
@@ -125,6 +132,15 @@ function App() {
           <Route path='/dashboard/settings' element={<Settings />}></Route>
           <Route path='/dashboard/profile' element={<Profile />}></Route>
           <Route path='/dashboard/editCompanyDetails' element={<EditCompanyDetails />}></Route>
+          <Route path='/dashboard/addBranches' element={<AddBranches />}></Route>
+          <Route path='/dashboard/addNewBranch' element={<AddNewBranch />}></Route>
+          <Route path='/dashboard/edit_branch/:branchId' element={<EditBranch />}
+          ></Route>
+          <Route path='/dashboard/addDepartments' element={<AddDepartments />}></Route>
+          <Route path='/dashboard/addNewDepartment' element={<AddNewDepartment />}></Route>
+          <Route path='/dashboard/qrCodeAttendance' element={<QrCodeAttendance />}></Route>
+          <Route path='/dashboard/edit_department/:departmentId' element={<EditDepartment />}
+          ></Route>
           <Route path='/dashboard/add_employee' element={<AddEmployee />}></Route>
           <Route path='/dashboard/edit_employee/:employeeId' element={<EditEmployee />}
           ></Route>

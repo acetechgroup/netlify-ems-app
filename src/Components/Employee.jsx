@@ -121,7 +121,7 @@ const Employee = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("https://emspro-production.up.railway.app/api/employee/", {
+      .get("https://emsbymohit-production.up.railway.app/api/employee/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

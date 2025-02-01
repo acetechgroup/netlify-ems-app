@@ -33,43 +33,67 @@ const Settings = () => {
           </Link>
         </div>
         <div className='setting-list'>
+          <Link
+          to="/dashboard/addBranches"
+            className="nav-link"
+          >
           <div className='setting-list-1'>
             <div className='d-flex'>
               <div className='me-3 ms-1'>
                 <i className="fs-2 bi bi-diagram-2"></i>
               </div>
-              <div><span className='text-seting'>My Branches</span><br /><span className='text-seting-1'>Add or remove branches</span></div>
+              <div>
+                <span className='text-seting'>My Branches</span><br />
+                <span className='text-seting-1'>Add or remove branches</span>
+              </div>
             </div>
             <div className='me-4 mt-3'>
               <i className="fs-5 bi bi-arrow-right"></i>
             </div>
           </div>
+          </Link>
         </div>
         <div className='setting-list'>
+        <Link
+          to="/dashboard/addDepartments"
+            className="nav-link"
+          >
           <div className='setting-list-1'>
             <div className='d-flex'>
               <div className='me-3 ms-1'>
                 <i className="fs-2 bi bi-diagram-2"></i>
               </div>
-              <div><span className='text-seting'>My Departments</span><br /><span className='text-seting-1'>Add or remove departments</span></div>
+              <div>
+                <span className='text-seting'>My Departments</span><br />
+                <span className='text-seting-1'>Add or remove departments</span>
+              </div>
             </div>
             <div className='me-4 mt-3'>
               <i className="fs-5 bi bi-arrow-right"></i>
             </div>
           </div>
+          </Link>
         </div>
         <div className='setting-list-lb'>
+        <Link
+          to="/dashboard/report"
+            className="nav-link"
+          >
           <div className='setting-list-1'>
             <div className='d-flex'>
               <div className='me-3 ms-1 mt-1'>
                 <i className="fs-3 bi bi-journal-check"></i>
               </div>
-              <div><span className='text-seting'>My Company Reports</span><br /><span className='text-seting-1'>Generate diffrent type of report for whole company</span></div>
+              <div>
+                <span className='text-seting'>My Company Reports</span><br />
+                <span className='text-seting-1'>Generate diffrent type of report for whole company</span>
+              </div>
             </div>
             <div className='me-4 mt-3'>
               <i className="fs-5 bi bi-arrow-right"></i>
             </div>
           </div>
+          </Link>
         </div>
       </div>
       <div className='setting-bg-3 mt-4'>
@@ -77,19 +101,31 @@ const Settings = () => {
           My Team
         </div>
         <div className='setting-list'>
+        <Link
+          to="#"
+            className="nav-link"
+          >
           <div className='setting-list-1'>
             <div className='d-flex mt-2'>
               <div className='me-3 ms-1'>
                 <i className="fs-2 bi bi-person"></i>
               </div>
-              <div><span className='text-seting'>Admins</span><br /><span className='text-seting-1'>Add or remove admins to your company</span></div>
+              <div>
+                <span className='text-seting'>Admins</span><br />
+                <span className='text-seting-1'>Add or remove admins to your company</span>
+              </div>
             </div>
             <div className='me-4 mt-3'>
               <i className="fs-5 bi bi-arrow-right"></i>
             </div>
           </div>
+          </Link>
         </div>
         <div className='setting-list-lb'>
+        <Link
+          to="#"
+            className="nav-link"
+          >
           <div className='setting-list-1'>
             <div className='d-flex'>
               <div className='me-3 ms-1'>
@@ -101,6 +137,7 @@ const Settings = () => {
               <i className="fs-5 bi bi-arrow-right"></i>
             </div>
           </div>
+          </Link>
         </div>
       </div>
       <div className='setting-bg-3 mt-4'>
@@ -109,12 +146,17 @@ const Settings = () => {
         </div>
         <div className='setting-list'>
           <div className='setting-list-1'>
+          <Link
+          to="/dashboard/qrCodeAttendance"
+            className="nav-link"
+          >
             <div className='d-flex mt-2'>
               <div className='me-3 ms-1'>
                 <i className="fs-2 bi bi-qr-code"></i>
               </div>
               <div><span className='text-seting'>QR Code Attendance</span><br /><span className='text-seting-1'>Mark attendance using QR code</span></div>
             </div>
+            </Link>
             <div className='me-4 mt-3'>
               <label className="switch">
                 <input type="checkbox" />
