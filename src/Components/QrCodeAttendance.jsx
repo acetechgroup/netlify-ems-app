@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import QRCode from "react-qr-code";
+import QRCode from 'react-qr-code';
 
 const QrCodeAttendance = () => {
 
@@ -10,7 +10,7 @@ const QrCodeAttendance = () => {
     time = new Date().toLocaleTimeString();
     setCtime(time);
   }
-  setInterval(updateTime, 1000);
+  setInterval(updateTime, 5000);
 
   return (
     <div className='pay_employee_bg bg-head'>
@@ -34,3 +34,17 @@ const QrCodeAttendance = () => {
 }
 
 export default QrCodeAttendance
+
+// import React from 'react'
+// import { QRCodeCanvas } from "qrcode.react";
+
+// const QrCodeAttendance = () => {
+//   return (
+//     <>
+//     <div>QrCodeAttendance</div>
+//     <QRCodeCanvas value="https://example.com" size={200} />
+//     </>
+//   )
+// }
+
+// export default QrCodeAttendance

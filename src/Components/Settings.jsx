@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Settings = () => {
+
+  const [isCheckedQR, setIsCheckedQR] = useState(false);
+
+  const handleCheckboxChangeQR = (event) => {
+    setIsCheckedQR(event.target.checked);
+    if (isCheckedQR) {
+      alert("QR Code Scan Attendance Getting Off ❌");
+    } else {
+      alert("QR Code Scan Attendance Getting On ✅");
+    }
+  };
+
   return (
     <div className='setting-bg'>
       <div className='setting-bg-2 bg-head'>
@@ -159,10 +171,11 @@ const Settings = () => {
             </Link>
             <div className='me-4 mt-3'>
               <label className="switch">
-                <input type="checkbox" />
+                <input type="checkbox" checked={isCheckedQR} onChange={handleCheckboxChangeQR}/>
                 <span className="slider round"></span>
               </label>
             </div>
+            {/* <div><p>{isCheckedQR ? "Checked ✅" : "Not Checked ❌"}</p></div> */}
           </div>
         </div>
         <div className='setting-list'>
