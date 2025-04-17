@@ -13,6 +13,46 @@ const Settings = () => {
       alert("QR Code Scan Attendance Getting On ✅");
     }
   };
+  const [isCheckedTracker, setIsCheckedTracker] = useState(false);
+
+  const handleCheckboxChangeTracker = (event) => {
+    setIsCheckedTracker(event.target.checked);
+    if (isCheckedTracker) {
+      alert("Tracker Getting Off ❌");
+    } else {
+      alert("Tracker Getting On ✅");
+    }
+  };
+  const [isCheckedAutoPresent, setIsCheckedAutoPresent] = useState(false);
+
+  const handleCheckboxChangeAutoPresent = (event) => {
+    setIsCheckedAutoPresent(event.target.checked);
+    if (isCheckedAutoPresent) {
+      alert("AutoPresent Getting Off ❌");
+    } else {
+      alert("AutoPresent Getting On ✅");
+    }
+  };
+  const [isCheckedMultiplePunch, setIsCheckedMultiplePunch] = useState(false);
+
+  const handleCheckboxChangeMultiplePunch = (event) => {
+    setIsCheckedMultiplePunch(event.target.checked);
+    if (isCheckedMultiplePunch) {
+      alert("MultiplePunch In Getting Off ❌");
+    } else {
+      alert("MultiplePunch In Getting On ✅");
+    }
+  };
+  const [isCheckedSelfieAttendance, setIsCheckedSelfieAttendance] = useState(false);
+
+  const handleCheckboxChangeSelfieAttendance = (event) => {
+    setIsCheckedSelfieAttendance(event.target.checked);
+    if (isCheckedSelfieAttendance) {
+      alert("SelfieAttendance Getting Off ❌");
+    } else {
+      alert("SelfieAttendance Getting On ✅");
+    }
+  };
 
   return (
     <div className='setting-bg'>
@@ -180,15 +220,19 @@ const Settings = () => {
         </div>
         <div className='setting-list'>
           <div className='setting-list-1'>
+            <Link
+            to="/dashboard/#"
+            className="nav-link">
             <div className='d-flex'>
               <div className='me-3 ms-1'>
                 <i className="fs-2 bi bi-geo-alt"></i>
               </div>
               <div><span className='text-seting'>Auto Live Track</span><br /><span className='text-seting-1'>Track employees live location</span></div>
             </div>
+            </Link>
             <div className='me-4 mt-3'>
               <label className="switch">
-                <input type="checkbox" />
+                <input type="checkbox" checked={isCheckedTracker} onChange={handleCheckboxChangeTracker} />
                 <span className="slider round"></span>
               </label>
             </div>
@@ -196,15 +240,19 @@ const Settings = () => {
         </div>
         <div className='setting-list'>
           <div className='setting-list-1'>
+            <Link
+            to="/dashboard/#"
+            className="nav-link">
             <div className='d-flex'>
               <div className='me-3 ms-1'>
                 <i className="fs-2 bi bi-calendar-check"></i>
               </div>
               <div><span className='text-seting'>Auto-Present</span><br /><span className='text-seting-1'>Employee will mark present automatically</span></div>
             </div>
+            </Link>
             <div className='me-4 mt-3'>
               <label className="switch">
-                <input type="checkbox" />
+                <input type="checkbox" checked={isCheckedAutoPresent} onChange={handleCheckboxChangeAutoPresent}/>
                 <span className="slider round"></span>
               </label>
             </div>
@@ -212,15 +260,19 @@ const Settings = () => {
         </div>
         <div className='setting-list'>
           <div className='setting-list-1'>
+            <Link
+            to="/dashboard/#"
+            className="nav-link">
             <div className='d-flex'>
               <div className='me-3 ms-1'>
                 <i className="fs-2 bi bi-arrows-collapse"></i>
               </div>
               <div><span className='text-seting'>Multiple Punch In</span><br /><span className='text-seting-1'>Employee can punch in multiple times</span></div>
             </div>
+            </Link>
             <div className='me-4 mt-3'>
               <label className="switch">
-                <input type="checkbox" />
+                <input type="checkbox" checked={isCheckedMultiplePunch} onChange={handleCheckboxChangeMultiplePunch}/>
                 <span className="slider round"></span>
               </label>
             </div>
@@ -228,15 +280,19 @@ const Settings = () => {
         </div>
         <div className='setting-list'>
           <div className='setting-list-1'>
+            <Link
+            to="/dashboard/#"
+            className="nav-link">
             <div className='d-flex'>
               <div className='me-3 ms-1'>
                 <i className="fs-2 bi bi-camera"></i>
               </div>
               <div><span className='text-seting'>Selfie Attendance</span><br /><span className='text-seting-1'>Mark attendance using selfie</span></div>
             </div>
+            </Link>
             <div className='me-4 mt-3'>
               <label className="switch">
-                <input type="checkbox" />
+                <input type="checkbox" checked={isCheckedSelfieAttendance} onChange={handleCheckboxChangeSelfieAttendance}/>
                 <span className="slider round"></span>
               </label>
             </div>
